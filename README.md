@@ -1,6 +1,6 @@
 # apple-cta-websites
 
-Landing pages for our seven apps. Each app gets one simple website, and each site has one job: collecting waitlist emails through a single call-to-action (CTA) button while the app is still being built.
+Everything served at **https://bishal.app**: the app catalogue at `/` and landing pages for our seven apps at `/lotus-*/`. Each app gets one simple website, and each site has one job: collecting waitlist emails through a single call-to-action (CTA) button while the app is still being built.
 
 ## What each site does
 
@@ -10,15 +10,18 @@ Landing pages for our seven apps. Each app gets one simple website, and each sit
 
 ## Repository structure
 
-All seven sites are served by one Cloudflare Worker (`lotus-waitlists`) on the route `bishal.app/lotus-*`, one path per app. The rest of `bishal.app` is the main site, a separate repo and Pages project.
+The whole site is one Cloudflare Pages project (`bishal-app-pages`) with Pages Functions, on the domains `bishal.app` and `www.bishal.app`. There are no Workers.
 
 ```
 apple-cta-websites/
 ├── README.md
 ├── APPS.md                     # Details for each app
-├── wrangler.toml               # Worker config: route, static assets, D1 binding
-├── src/index.js                # Waitlist API: POST /<app>/api/join → D1
-└── public/                     # Generated static sites (don't edit by hand)
+├── wrangler.toml               # Pages config: output folder, D1 binding
+├── functions/[app]/api/join.js # Waitlist API: POST /<app>/api/join → D1
+├── app-1/                      # Dayline reference design (not deployed)
+└── public/                     # What Pages serves
+    ├── index.html, styles.css  # The catalogue at https://bishal.app/
+    ├── apps.js                 # Catalogue's app list (generated)
     ├── lotus-g-1/              # https://bishal.app/lotus-g-1/
     ├── lotus-c-1/              # https://bishal.app/lotus-c-1/
     ├── lotus-f-1/              # https://bishal.app/lotus-f-1/
@@ -35,7 +38,7 @@ See [APPS.md](APPS.md) for what each app does, who it's for, and its key feature
 All seven sites write to **one shared Cloudflare D1 database**.
 
 - Each signup stores the email and which app it came from, so one database holds all seven waitlists.
-- Every site's forms post to `api/join` relative to its own folder (`/lotus-g-1/api/join`), handled by the Worker, which is bound to the D1 database `waitlist-db`.
+- Every site's forms post to `api/join` relative to its own folder (`/lotus-g-1/api/join`), handled by the Pages Function `functions/[app]/api/join.js`, which is bound to the D1 database `waitlist-db`.
 
 ## Status
 
@@ -43,11 +46,11 @@ All seven sites write to **one shared Cloudflare D1 database**.
 
 ## Building the sites
 
-The seven sites are generated from one shared design, so they stay consistent. Don't edit `public/` by hand; edit the source and rebuild.
+The seven sites, and the catalogue's app list `public/apps.js`, are generated from one shared design and one content file per app, so they stay consistent. Don't edit generated files by hand; edit the source and rebuild. The catalogue page itself (`public/index.html`, `public/styles.css`) is hand-written.
 
 ```
 tools/site-builder/
-├── build.py          # Renders every app into public/<slug>/
+├── build.py          # Renders every app into public/<slug>/ and writes public/apps.js
 ├── assets/           # Shared styles.css and site.js
 └── apps/             # One content file per app (copy, features, FAQ, policies)
 ```
@@ -84,18 +87,20 @@ Forms work without JavaScript too: a plain form post redirects back with `?joine
 
 ## Deploying
 
-Everything deploys as one Worker from the repo root:
+The Pages project is connected to this repo: **every push to `main` deploys**. `public/` is committed, so Cloudflare runs no build step. Rebuild locally before you commit:
 
 ```bash
 python3 tools/site-builder/build.py
-npx wrangler deploy
+git add -A && git commit -m "…" && git push
 ```
 
-Static files in `public/` are served directly. Only requests that match no file (the waitlist API) run `src/index.js`. Before `bishal.app` is live, the sites are also at `https://lotus-waitlists.bishalj-apps.workers.dev/<app>/`.
+Static files in `public/` are served directly; only `POST /<app>/api/join` runs code. The site is also at `https://bishal-app-pages.pages.dev/`.
+
+To run it locally (with a local copy of the database): `npx wrangler pages dev`.
 
 ## Analytics
 
-One Cloudflare Web Analytics site for `bishal.app` covers the main site and every `/lotus-*` page. It's cookieless. To see one app, filter the dashboard by path, e.g. `/lotus-g-1/`.
+One Cloudflare Web Analytics site for `bishal.app` covers the catalogue and every `/lotus-*` page (the beacon is in `public/index.html` and in every generated page). It's cookieless. To see one app, filter the dashboard by path, e.g. `/lotus-g-1/`.
 
 Export sign-ups (exports are gitignored; they contain personal data):
 

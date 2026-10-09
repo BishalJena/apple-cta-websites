@@ -34,3 +34,7 @@ exports/
 
 # Local browser-test output
 .playwright-mcp/
+
+# Private notes (local only)
+learning.md
+learning.html

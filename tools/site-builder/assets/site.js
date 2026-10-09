@@ -47,7 +47,7 @@
   window.addEventListener("scroll", updateNav, { passive: true });
 
   // ---------- Waitlist ----------
-  // Forms post to the site's own Pages Function (functions/api/join.js).
+  // Forms post to api/join in their own folder, handled by functions/[app]/api/join.js (Pages Function).
 
   function setStatus(form, kind, text) {
     const status = form.parentElement.querySelector(".waitlist-status");

@@ -1,7 +1,6 @@
-// Lotus waitlists: one Cloudflare Worker on the route bishal.app/lotus-*.
+// Lotus waitlists: Pages Function for POST /<app>/api/join (e.g. /lotus-g-1/api/join).
 //
-// Static pages in public/<app>/ are served as Worker assets before this code
-// runs; only requests that match no file (the API) reach fetch() below.
+// Static pages in public/<app>/ are served by Pages directly; only this route runs code.
 //
 // POST /<app>/api/join   { email, source?, page?, referrer? }   (JSON or form-encoded)
 //   201 { ok: true }                 new sign-up
@@ -10,11 +9,12 @@
 //   404 { error }                    <app> isn't an active row in the apps table
 //
 // Each site's forms post to "api/join" relative to their own folder, so the app
-// is the first path segment. Writes go to the shared D1 database (binding DB):
-// contacts (one row per email) + waitlist_signups (one row per email per app).
-// Form posts (no JavaScript) redirect back with ?joined=1.
+// is the first path segment ([app] in this file's path). Writes go to the D1
+// database bound as DB in wrangler.toml: contacts (one row per email) +
+// waitlist_signups (one row per email per app). Form posts (no JavaScript)
+// redirect back with ?joined=1.
 
-const JOIN_PATH = /^\/([a-z0-9-]+)\/api\/join\/?$/;
+const SLUG_RE = /^[a-z0-9-]+$/;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
 
@@ -45,14 +45,15 @@ async function readBody(request) {
   return { data: Object.fromEntries(form), isForm: true };
 }
 
-export default {
-  async fetch(request, env) {
-    const match = new URL(request.url).pathname.match(JOIN_PATH);
-    if (!match) return new Response("Not found", { status: 404 });
-    if (request.method !== "POST") return json({ error: "Method not allowed" }, 405);
-    return join(request, env, match[1]);
-  },
-};
+export async function onRequestPost({ request, env, params }) {
+  const slug = String(params.app || "");
+  if (!SLUG_RE.test(slug)) return json({ error: "Not found" }, 404);
+  return join(request, env, slug);
+}
+
+export function onRequest() {
+  return json({ error: "Method not allowed" }, 405);
+}
 
 async function join(request, env, slug) {
   let data, isForm;
