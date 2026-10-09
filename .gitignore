@@ -31,3 +31,6 @@ __pycache__/
 *.sqlite3
 *.db
 exports/
+
+# Local browser-test output
+.playwright-mcp/

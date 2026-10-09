@@ -94,8 +94,8 @@ def nav(app, current, on_home):
   <header class="nav-wrap">
     <nav class="nav" aria-label="Main">
       <a class="app-identity" href="index.html">
-        <img class="app-icon" src="assets/app-icon.svg" alt="">
         <span>{esc(app["name"])}</span>
+        <img class="app-icon" src="assets/app-icon.svg" alt="">
       </a>
       <ul class="nav-links">
 {items}
@@ -109,7 +109,7 @@ def nav(app, current, on_home):
 def footer(app):
     return f'''  <footer class="footer">
     <div class="footer-top">
-      <a class="app-identity" href="index.html"><img class="app-icon" src="assets/app-icon.svg" alt=""><span>{esc(app["name"])}</span></a>
+      <a class="app-identity" href="index.html"><span>{esc(app["name"])}</span><img class="app-icon" src="assets/app-icon.svg" alt=""></a>
       <ul class="footer-links">
         <li><a href="privacy.html">Privacy</a></li>
         <li><a href="terms.html">Terms of Use</a></li>
