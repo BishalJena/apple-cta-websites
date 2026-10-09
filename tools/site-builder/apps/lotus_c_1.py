@@ -78,18 +78,24 @@ APP = {
             "size": "third", "color": "purple", "kicker": "Face tracking",
             "title": "Spots the nod",
             "text": "Tracks head position, nods and long blinks to catch fatigue before it turns into microsleep.",
-            "media": '''            <div class="face" aria-hidden="true">
-              <svg viewBox="0 0 200 200" fill="none" stroke="var(--brand)" stroke-width="2.5" stroke-linecap="round">
-                <path d="M100 22c-38 0-62 30-62 70 0 46 28 86 62 86s62-40 62-86c0-40-24-70-62-70Z" opacity=".5"/>
-                <path d="M66 90c6-5 16-5 22 0M112 90c6-5 16-5 22 0"/>
-                <path d="M88 132c8 6 16 6 24 0"/>
-                <g fill="var(--brand)" stroke="none">
-                  <circle cx="66" cy="90" r="3.5"/><circle cx="88" cy="90" r="3.5"/><circle cx="112" cy="90" r="3.5"/><circle cx="134" cy="90" r="3.5"/>
-                  <circle cx="100" cy="112" r="3.5"/><circle cx="88" cy="132" r="3.5"/><circle cx="112" cy="132" r="3.5"/>
-                  <circle cx="44" cy="100" r="3"/><circle cx="156" cy="100" r="3"/><circle cx="100" cy="176" r="3"/>
-                </g>
-              </svg>
-              <div class="scan"></div>
+            "media": '''            <div class="device-panel" aria-hidden="true" style="max-width: 280px">
+              <div class="viewfinder">
+                <svg viewBox="0 0 200 200" fill="none" stroke="rgb(255 255 255 / 0.55)" stroke-width="2" stroke-linecap="round">
+                  <path d="M100 30c-32 0-52 26-52 60 0 40 24 76 52 76s52-36 52-76c0-34-20-60-52-60Z"/>
+                  <path d="M72 92c5-4 13-4 18 0M110 92c5-4 13-4 18 0" stroke="#fff" stroke-width="3"/>
+                  <path d="M90 136c6 4 14 4 20 0"/>
+                  <g fill="var(--brand)" stroke="none">
+                    <circle cx="72" cy="92" r="3.5"/><circle cx="90" cy="92" r="3.5"/><circle cx="110" cy="92" r="3.5"/><circle cx="128" cy="92" r="3.5"/>
+                    <circle cx="100" cy="114" r="3.5"/><circle cx="90" cy="136" r="3"/><circle cx="110" cy="136" r="3"/>
+                    <circle cx="52" cy="100" r="3"/><circle cx="148" cy="100" r="3"/><circle cx="100" cy="164" r="3"/>
+                  </g>
+                </svg>
+                <div class="scan"></div>
+              </div>
+              <div class="readouts">
+                <div class="readout"><span>Long blinks</span><b>2 <small style="font-size: 12px; opacity: .6">/ 5 min</small></b></div>
+                <div class="readout"><span>Head tilt</span><b style="color: var(--accent-orange)">14°</b></div>
+              </div>
             </div>''',
         },
         {
@@ -108,22 +114,36 @@ APP = {
             "size": "half", "color": "orange", "kicker": "Wake-up alarm",
             "title": "Loud enough to work",
             "text": "When drowsiness is detected, it plays loud music or high-energy sounds through the car stereo to snap you back.",
-            "media": '''            <div class="vstack" style="max-width: 300px">
-              <div class="wave" aria-hidden="true">
-                <i style="--h: 30px; --i: 0"></i><i style="--h: 52px; --i: 1"></i><i style="--h: 66px; --i: 2"></i><i style="--h: 40px; --i: 3"></i><i style="--h: 60px; --i: 4"></i>
-                <i style="--h: 70px; --i: 5"></i><i style="--h: 46px; --i: 6"></i><i style="--h: 58px; --i: 7"></i><i style="--h: 34px; --i: 8"></i><i style="--h: 50px; --i: 9"></i>
+            "media": '''            <div class="device-panel alert-screen" style="max-width: 320px" aria-hidden="true">
+              <span class="big-icon icon">notifications_active</span>
+              <h4>Time to wake up</h4>
+              <p>Signs of microsleep detected</p>
+              <div class="wave">
+                <i style="--h: 22px; --i: 0"></i><i style="--h: 36px; --i: 1"></i><i style="--h: 44px; --i: 2"></i><i style="--h: 28px; --i: 3"></i><i style="--h: 40px; --i: 4"></i>
+                <i style="--h: 44px; --i: 5"></i><i style="--h: 30px; --i: 6"></i><i style="--h: 38px; --i: 7"></i><i style="--h: 24px; --i: 8"></i><i style="--h: 34px; --i: 9"></i>
               </div>
-              <div class="big-button" style="--c: var(--accent-orange); width: 100%"><span class="icon">volume_up</span>Wake-up alarm · 100%</div>
+              <div class="btn-row"><span class="primary">I'm awake</span><span>Find a rest stop</span></div>
             </div>''',
         },
         {
             "size": "full", "color": "red", "kicker": "Black spots",
             "title": "Extra care where it matters most",
             "text": "Lotus C-1 knows the stretches of road with the most accidents, and is more sensitive to signs of fatigue as you approach them.",
-            "media": '''            <div class="list" style="max-width: 520px">
-              <div class="list-row flag"><span class="badge solid icon" style="--c: var(--accent-red)">dangerous</span><div class="main"><b>Accident black spot in 3.2 km</b><span>Sharp bends · high night-time risk</span></div><span class="pill" style="--c: var(--accent-red)">High alert</span></div>
-              <div class="list-row"><span class="badge icon" style="--c: var(--accent-orange)">nights_stay</span><div class="main"><b>Long drive at night</b><span>Fatigue checks every minute</span></div><span class="pill" style="--c: var(--accent-orange)">On</span></div>
-              <div class="list-row"><span class="badge icon" style="--c: var(--accent-green)">local_cafe</span><div class="main"><b>Rest area in 18 km</b><span>Suggested break · 15 min</span></div><span class="trail" style="color: var(--accent-green)">Go</span></div>
+            "media": '''            <div class="split" style="max-width: 760px">
+              <div class="map" role="img" aria-label="Map showing a black spot zone on the route ahead">
+                <svg viewBox="0 0 400 225" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M-10 200 C 70 190, 120 150, 170 130 S 240 60, 300 70 S 380 40, 410 20" fill="none" stroke="var(--brand)" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+                </svg>
+                <span class="zone" style="left: 66%; top: 34%; width: 90px; height: 90px"></span>
+                <span class="pin icon" style="left: 66%; top: 34%">dangerous</span>
+                <span class="pin me" style="left: 14%; top: 84%"></span>
+                <span class="label" style="left: 66%; top: 52%">3.2 km</span>
+              </div>
+              <div class="list">
+                <div class="list-row flag"><span class="badge solid icon" style="--c: var(--accent-red)">dangerous</span><div class="main"><b>Black spot in 3.2 km</b><span>Sharp bends · high night-time risk</span></div></div>
+                <div class="list-row"><span class="badge icon" style="--c: var(--accent-orange)">nights_stay</span><div class="main"><b>Long drive at night</b><span>Fatigue checks every minute</span></div><span class="pill" style="--c: var(--accent-orange)">On</span></div>
+                <div class="list-row"><span class="badge icon" style="--c: var(--accent-green)">local_cafe</span><div class="main"><b>Rest area in 18 km</b><span>Suggested break · 15 min</span></div><span class="trail" style="color: var(--accent-green)">Go</span></div>
+              </div>
             </div>''',
         },
     ],

@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap">
   <link rel="stylesheet" href="assets/styles.css">
   <style>:root { --brand: var(--accent-blue); --brand-2: var(--accent-mint); }</style>
+  <script>if (scrollY < 8) document.documentElement.classList.add("nav-top");</script>
 </head>
 <body>
   <div class="nav-spacer"></div>
@@ -95,22 +96,25 @@
         <h2 class="section-title">Book with confidence.<br>Travel without the stress.</h2>
       </div>
       <div class="card-grid">
-        <figure class="card two-thirds reveal" style="--k: var(--accent-green)">
+        <figure class="card two-thirds" style="--k: var(--accent-green)">
           <figcaption class="card-text">
             <span class="kicker">Private search</span>
             <h2>The same fare, wherever you search</h2>
             <p>Searches go through a private connection that hides your IP address and phone fingerprint, so prices aren&#x27;t marked up for searching on a phone.</p>
           </figcaption>
           <div class="card-media">
-            <div class="compare" role="img" aria-label="Illustration: regular phone search $214, Lotus F-2 private search $168">
-              <div class="compare-row"><div class="top"><span>Regular phone search</span><b>$214</b></div><div class="bar"><i style="--w: 100%; --c: var(--color-fill-3)"></i></div></div>
-              <div class="compare-row"><div class="top"><span>Laptop search</span><b>$176</b></div><div class="bar"><i style="--w: 82%; --c: color-mix(in srgb, var(--accent-blue) 45%, transparent)"></i></div></div>
-              <div class="compare-row"><div class="top"><span style="color: var(--accent-green)">Lotus F-2 private search</span><b style="color: var(--accent-green)">$168</b></div><div class="bar"><i style="--w: 78%; --c: var(--accent-green)"></i></div></div>
+            <div class="panel" style="max-width: 420px; gap: 14px">
+              <div class="chart-head" style="align-items: center"><span class="label">Hidden from booking sites</span><span class="pill" style="--c: var(--accent-green)"><span class="icon">shield</span>Private search on</span></div>
+              <div class="masked"><span><span class="icon">public</span>IP address</span><span><span class="icon">smartphone</span>Device model</span><span><span class="icon">location_on</span>Location</span><span><span class="icon">cookie</span>Cookies</span></div>
+              <div class="compare" role="img" aria-label="Illustration: regular phone search $214, Lotus F-2 private search $168" style="max-width: none">
+                <div class="compare-row"><div class="top"><span>Regular phone search</span><b>$214</b></div><div class="bar"><i style="--w: 100%; --c: var(--color-fill-3)"></i></div></div>
+                <div class="compare-row"><div class="top"><span style="color: var(--accent-green)">Lotus F-2 private search</span><b style="color: var(--accent-green)">$168</b></div><div class="bar"><i style="--w: 78%; --c: var(--accent-green)"></i></div></div>
+              </div>
               <span class="ui-sub">Example prices for illustration</span>
             </div>
           </div>
         </figure>
-        <figure class="card third reveal" style="--k: var(--accent-blue)">
+        <figure class="card third" style="--k: var(--accent-blue)">
           <figcaption class="card-text">
             <span class="kicker">Price comparison</span>
             <h2>Every fare in one place</h2>
@@ -118,13 +122,14 @@
           </figcaption>
           <div class="card-media">
             <div class="list" style="max-width: 260px">
+              <div class="list-head"><span>DPS → SIN · Fri 14 Nov</span><span>12 sites</span></div>
               <div class="fare best"><span class="al" style="--c: var(--accent-blue)">CA</span><div class="times"><b>Coral Air</b><span>Direct · 2h 35m</span></div><div class="price">$168</div></div>
               <div class="fare"><span class="al" style="--c: var(--accent-orange)">SJ</span><div class="times"><b>Sunda Jet</b><span>Direct · 2h 40m</span></div><div class="price">$181</div></div>
               <div class="fare"><span class="al" style="--c: var(--accent-purple)">TA</span><div class="times"><b>Tern Airways</b><span>1 stop · 4h 25m</span></div><div class="price">$157</div></div>
             </div>
           </div>
         </figure>
-        <figure class="card half reveal" style="--k: var(--accent-orange)">
+        <figure class="card half" style="--k: var(--accent-orange)">
           <figcaption class="card-text">
             <span class="kicker">Document checklist</span>
             <h2>Every document, for your exact route</h2>
@@ -132,6 +137,7 @@
           </figcaption>
           <div class="card-media">
             <div class="list" style="max-width: 340px">
+              <div class="list-head" style="flex-direction: column; align-items: stretch; gap: 6px"><div style="display: flex; justify-content: space-between"><span>Singapore entry</span><span style="color: var(--accent-green)">2 of 4 ready</span></div><div class="meter"><i style="--w: 50%; --c: var(--accent-green)"></i></div></div>
               <div class="check-row done"><span class="box icon">check</span><div class="main"><b>Passport</b><span>Valid until March 2031</span></div></div>
               <div class="check-row done"><span class="box icon">check</span><div class="main"><b>Return ticket</b><span>Booked</span></div></div>
               <div class="check-row"><span class="box todo icon">check</span><div class="main"><b>Arrival card</b><span>Submit online, 3 days before</span></div><span class="pill" style="--c: var(--accent-orange)">To do</span></div>
@@ -139,17 +145,25 @@
             </div>
           </div>
         </figure>
-        <figure class="card half reveal" style="--k: var(--accent-purple)">
+        <figure class="card half" style="--k: var(--accent-purple)">
           <figcaption class="card-text">
             <span class="kicker">Step-by-step guidance</span>
             <h2>No surprises at the airport</h2>
             <p>Simple steps and reminders for check-in, security and immigration, so you&#x27;re never left guessing.</p>
           </figcaption>
           <div class="card-media">
+            <div class="vstack" style="gap: 18px; max-width: 340px">
+            <div class="ticket" aria-hidden="true">
+              <div class="ticket-top">
+                <div class="route"><div><div class="code">DPS</div><div class="city">Denpasar</div></div><div class="line"><span class="icon">flight</span></div><div style="text-align: right"><div class="code">SIN</div><div class="city">Singapore</div></div></div>
+              </div>
+              <div class="ticket-bottom"><div><span>Boarding</span><b>07:35</b></div><div><span>Gate</span><b>D4</b></div><div><span>Seat</span><b>14A</b></div></div>
+            </div>
             <div class="steps">
               <div class="step done"><span class="n"><span class="icon">check</span></span><div><b>Online check-in</b><span>Opens 48 hours before</span></div></div>
               <div class="step now"><span class="n">2</span><div><b>Bag drop by 06:15</b><span>Terminal 2 · Counter D</span></div></div>
               <div class="step"><span class="n">3</span><div><b>Immigration</b><span>Have your arrival card ready</span></div></div>
+            </div>
             </div>
           </div>
         </figure>
@@ -161,19 +175,19 @@
     <section class="section reviews-section">
       <h2 class="reviews-title">Questions, answered</h2>
       <div class="faq">
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Why are flights more expensive on my phone?</h3>
           <p>Some booking sites change prices based on your device, location and browsing history. Lotus F-2 searches without revealing those signals, so you see the same fares as everyone else.</p>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Is the private search legal?</h3>
           <p>Yes. It works like a privacy-focused VPN for your flight searches. You still book directly with the airline or booking site.</p>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Where do the document requirements come from?</h3>
           <p>We use a database of official entry rules for each country. Rules change, so we link to official sources and recommend checking them before you fly.</p>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Will Lotus F-2 always find a lower price?</h3>
           <p>Not always. Sometimes the price you&#x27;re shown is already fair. When it is, you&#x27;ll know you&#x27;re not overpaying.</p>
         </div>
@@ -187,15 +201,15 @@
         <h2 class="section-title">On the traveller&#x27;s side</h2>
       </div>
       <div class="values">
-        <figure class="value reveal" style="--c: var(--accent-blue)">
+        <figure class="value" style="--c: var(--accent-blue)">
           <span class="badge icon">visibility_off</span>
           <div><h3>No tracking</h3><p>We don&#x27;t build a profile of where you want to go, and we never sell your searches.</p></div>
         </figure>
-        <figure class="value reveal" style="--c: var(--accent-green)">
+        <figure class="value" style="--c: var(--accent-green)">
           <span class="badge icon">verified</span>
           <div><h3>Honest prices</h3><p>We show the fare you&#x27;ll actually pay, with baggage and fees made clear.</p></div>
         </figure>
-        <figure class="value reveal" style="--c: var(--accent-purple)">
+        <figure class="value" style="--c: var(--accent-purple)">
           <span class="badge icon">self_improvement</span>
           <div><h3>Less travel anxiety</h3><p>Every document and step for your route in one calm checklist.</p></div>
         </figure>
@@ -203,7 +217,7 @@
     </section>
 
     <!-- ===================== CTA ===================== -->
-    <section class="cta reveal">
+    <section class="cta">
       <div class="cta-inner">
         <img class="app-icon" src="assets/app-icon.svg" alt="Lotus F-2 app icon">
         <h2>Stop overpaying for flights</h2>

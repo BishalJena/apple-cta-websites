@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap">
   <link rel="stylesheet" href="assets/styles.css">
   <style>:root { --brand: var(--accent-purple); --brand-2: var(--accent-pink); }</style>
+  <script>if (scrollY < 8) document.documentElement.classList.add("nav-top");</script>
 </head>
 <body>
   <div class="nav-spacer"></div>
@@ -75,6 +76,10 @@
               <div class="chart-head" style="align-items: center"><span class="label">Match confidence</span><b class="rounded" style="font-size: 15px">Medium</b></div>
               <div class="meter"><i style="--w: 58%; --c: var(--accent-orange)"></i></div>
             </div>
+            <div class="ui-label" style="padding: 4px 4px 0">Next steps</div>
+            <div class="list">
+              <div class="list-row"><span class="badge icon" style="--c: var(--accent-purple)">forum</span><div class="main"><b>Plan the conversation</b><span>Gentle ways to bring it up</span></div><span class="trail icon">chevron_right</span></div>
+            </div>
             <div class="tabbar" aria-hidden="true"><span><span class="icon">search</span>Search</span><span class="on"><span class="icon">description</span>Reports</span><span><span class="icon">settings</span>Settings</span></div>
           </div>
         </div>
@@ -96,7 +101,7 @@
         <h2 class="section-title">Clarity, without<br>the guesswork.</h2>
       </div>
       <div class="card-grid">
-        <figure class="card two-thirds reveal" style="--k: var(--accent-purple)">
+        <figure class="card two-thirds" style="--k: var(--accent-purple)">
           <figcaption class="card-text">
             <span class="kicker">Cross-platform search</span>
             <h2>One search, every popular app</h2>
@@ -111,7 +116,7 @@
             </div>
           </div>
         </figure>
-        <figure class="card third reveal" style="--k: var(--accent-blue)">
+        <figure class="card third" style="--k: var(--accent-blue)">
           <figcaption class="card-text">
             <span class="kicker">Targeted matching</span>
             <h2>Just the right person</h2>
@@ -122,20 +127,38 @@
               <div class="list-row"><span class="badge icon" style="--c: var(--accent-blue)">person</span><div class="main"><span>Name</span><b>Alex</b></div></div>
               <div class="list-row"><span class="badge icon" style="--c: var(--accent-blue)">cake</span><div class="main"><span>Age</span><b>29 – 33</b></div></div>
               <div class="list-row"><span class="badge icon" style="--c: var(--accent-blue)">location_on</span><div class="main"><span>Area</span><b>Canggu · 10 km</b></div></div>
+              <div style="padding: 10px 12px 12px"><div class="big-button" style="--c: var(--accent-purple)"><span class="icon">search</span>Search 7 apps</div></div>
             </div>
           </div>
         </figure>
-        <figure class="card full reveal" style="--k: var(--accent-orange)">
+        <figure class="card full" style="--k: var(--accent-orange)">
           <figcaption class="card-text">
             <span class="kicker">Clear reports</span>
             <h2>A straight answer, and what to do next</h2>
             <p>Get a simple summary of any active profiles, how confident the match is, and when it was last active, plus guidance for the conversation that follows.</p>
           </figcaption>
           <div class="card-media">
-            <div class="stat-tiles" style="max-width: 520px; grid-template-columns: repeat(3, 1fr)">
-              <div class="stat-tile"><div class="num">7</div><div class="lbl">Apps checked</div></div>
-              <div class="stat-tile"><div class="num" style="color: var(--accent-orange)">1</div><div class="lbl">Possible match</div></div>
-              <div class="stat-tile"><div class="num">7<small>days</small></div><div class="lbl">Last active</div></div>
+            <div class="split" style="max-width: 760px; align-items: stretch">
+              <div class="panel" style="gap: 12px">
+                <div class="result-head">
+                  <span class="avatar-blur" aria-hidden="true"></span>
+                  <div style="flex: 1"><b style="font-size: 15px">Report summary</b><div class="ui-sub">Alex, 31 · Canggu</div></div>
+                  <span class="pill solid" style="--c: var(--accent-orange)">1 match</span>
+                </div>
+                <div class="stat-tiles" style="grid-template-columns: repeat(3, 1fr); max-width: none">
+                  <div class="stat-tile" style="background: var(--color-card)"><div class="num">7</div><div class="lbl">Apps checked</div></div>
+                  <div class="stat-tile" style="background: var(--color-card)"><div class="num" style="color: var(--accent-orange)">1</div><div class="lbl">Possible match</div></div>
+                  <div class="stat-tile" style="background: var(--color-card)"><div class="num">7<small>d</small></div><div class="lbl">Last active</div></div>
+                </div>
+                <div class="chart-head" style="align-items: center"><span class="label">Match confidence</span><b class="rounded" style="font-size: 15px">Medium</b></div>
+                <div class="meter"><i style="--w: 58%; --c: var(--accent-orange)"></i></div>
+              </div>
+              <div class="list">
+                <div class="list-head"><span>Before you talk</span><span class="icon" style="font-size: 16px">favorite</span></div>
+                <div class="list-row"><span class="badge icon" style="--c: var(--accent-purple)">self_improvement</span><div class="main"><b>Take a moment first</b><span>A match isn't proof of anything</span></div></div>
+                <div class="list-row"><span class="badge icon" style="--c: var(--accent-blue)">forum</span><div class="main"><b>Ask, don't accuse</b><span>Open questions keep things calm</span></div></div>
+                <div class="list-row"><span class="badge icon" style="--c: var(--accent-green)">support_agent</span><div class="main"><b>Get support</b><span>People you trust, or a counsellor</span></div></div>
+              </div>
             </div>
           </div>
         </figure>
@@ -147,19 +170,19 @@
     <section class="section reviews-section">
       <h2 class="reviews-title">Questions, answered</h2>
       <div class="faq">
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>How does Lotus E-2 search?</h3>
           <p>It looks only at information dating apps make publicly visible, using the details you provide. It doesn&#x27;t log in to anyone&#x27;s account or access private messages.</p>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Will the person know I searched?</h3>
           <p>Your searches and reports are private to you. We don&#x27;t contact or notify anyone.</p>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Is a match proof of cheating?</h3>
           <p>No. A profile might be old, fake or someone who looks similar. Treat results as a starting point for an honest conversation, not a verdict.</p>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Is this legal?</h3>
           <p>Lotus E-2 only uses publicly available information. You agree to use it responsibly and lawfully, never to harass or stalk anyone.</p>
         </div>
@@ -173,15 +196,15 @@
         <h2 class="section-title">Answers, handled with care</h2>
       </div>
       <div class="values">
-        <figure class="value reveal" style="--c: var(--accent-blue)">
+        <figure class="value" style="--c: var(--accent-blue)">
           <span class="badge icon">public</span>
           <div><h3>Public info only</h3><p>We only look at what dating apps already show publicly. No hacking, no account access.</p></div>
         </figure>
-        <figure class="value reveal" style="--c: var(--accent-purple)">
+        <figure class="value" style="--c: var(--accent-purple)">
           <span class="badge icon">lock</span>
           <div><h3>Private to you</h3><p>Searches and reports are visible only to you, and you can delete them anytime.</p></div>
         </figure>
-        <figure class="value reveal" style="--c: var(--accent-pink)">
+        <figure class="value" style="--c: var(--accent-pink)">
           <span class="badge icon">favorite</span>
           <div><h3>Built with empathy</h3><p>Clear, gentle reports and guidance, because this is hard enough already.</p></div>
         </figure>
@@ -189,7 +212,7 @@
     </section>
 
     <!-- ===================== CTA ===================== -->
-    <section class="cta reveal">
+    <section class="cta">
       <div class="cta-inner">
         <img class="app-icon" src="assets/app-icon.svg" alt="Lotus E-2 app icon">
         <h2>Get the clarity you deserve</h2>

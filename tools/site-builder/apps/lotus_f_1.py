@@ -65,9 +65,12 @@ APP = {
             "size": "half", "color": "orange", "kicker": "Safety alerts",
             "title": "Tells you straight away",
             "text": "Get an instant notification when possible surveillance hardware is detected nearby, with clear next steps.",
-            "media": '''            <div class="notif-stack">
-              <div class="notif"><img class="n-icon" src="assets/app-icon.svg" alt=""><div class="n-body"><div class="n-head"><b>Lotus F-1</b><time>now</time></div><p>Possible hidden camera nearby. Tap to see where to look.</p></div></div>
-              <div class="notif"><img class="n-icon" src="assets/app-icon.svg" alt=""><div class="n-body"><div class="n-head"><b>Lotus F-1</b><time>2 min ago</time></div><p>Room scan complete. 1 item to review.</p></div></div>
+            "media": '''            <div class="wallpaper bleed">
+              <div class="lock-time" style="font-size: 54px">22:14</div>
+              <div class="notif-stack">
+                <div class="notif"><img class="n-icon" src="assets/app-icon.svg" alt=""><div class="n-body"><div class="n-head"><b>Lotus F-1</b><time>now</time></div><p>Possible hidden camera nearby. Tap to see where to look.</p></div></div>
+                <div class="notif"><img class="n-icon" src="assets/app-icon.svg" alt=""><div class="n-body"><div class="n-head"><b>Lotus F-1</b><time>2m ago</time></div><p>Room scan complete. 1 item to review.</p></div></div>
+              </div>
             </div>''',
         },
         {
@@ -84,11 +87,26 @@ APP = {
             "size": "full", "color": "green", "kicker": "Guided check",
             "title": "A calm, step-by-step room check",
             "text": "Lotus F-1 walks you through the spots worth checking, like smoke detectors, chargers and mirrors, so nothing gets missed.",
-            "media": '''            <div class="steps" style="max-width: 440px">
-              <div class="step done"><span class="n"><span class="icon">check</span></span><div><b>Scan the networks</b><span>Wi-Fi and hidden networks checked</span></div></div>
-              <div class="step done"><span class="n"><span class="icon">check</span></span><div><b>Check Bluetooth and NFC</b><span>7 devices, 1 tag to review</span></div></div>
-              <div class="step now"><span class="n">3</span><div><b>Look around the room</b><span>Smoke detector, clock, chargers, mirrors</span></div></div>
-              <div class="step"><span class="n">4</span><div><b>Your safety summary</b><span>Save or share it with someone you trust</span></div></div>
+            "media": '''            <div class="split" style="max-width: 780px">
+              <div class="room" role="img" aria-label="Room floor plan with spots to check: smoke detector, TV, mirror and charger">
+                <svg viewBox="0 0 400 300" fill="none" stroke="color-mix(in srgb, var(--color-text-tertiary) 55%, transparent)" stroke-width="6" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M30 30h340v240H220M160 270H30Z"/>
+                  <rect x="60" y="70" width="130" height="150" rx="14" fill="var(--color-card)" stroke-width="3"/>
+                  <rect x="70" y="80" width="110" height="40" rx="10" fill="var(--color-inset)" stroke-width="2"/>
+                  <rect x="300" y="60" width="50" height="120" rx="8" fill="var(--color-card)" stroke-width="3"/>
+                  <rect x="250" y="220" width="90" height="30" rx="6" fill="var(--color-card)" stroke-width="3"/>
+                </svg>
+                <span class="spot" style="left: 50%; top: 14%; --c: var(--accent-green)"><span class="icon">check</span>Smoke detector</span>
+                <span class="spot" style="left: 80%; top: 42%; --c: var(--accent-orange)"><span class="icon">priority_high</span>TV</span>
+                <span class="spot" style="left: 30%; top: 86%; --c: var(--accent-green)"><span class="icon">check</span>Mirror</span>
+                <span class="spot" style="left: 74%; top: 78%"><span class="icon" style="background: var(--color-fill-3); color: var(--color-text-secondary)">more_horiz</span>Charger</span>
+              </div>
+              <div class="steps">
+                <div class="step done"><span class="n"><span class="icon">check</span></span><div><b>Scan the networks</b><span>Wi-Fi and hidden networks checked</span></div></div>
+                <div class="step done"><span class="n"><span class="icon">check</span></span><div><b>Check Bluetooth and NFC</b><span>7 devices, 1 tag to review</span></div></div>
+                <div class="step now"><span class="n">3</span><div><b>Look around the room</b><span>Smoke detector, TV, mirrors, chargers</span></div></div>
+                <div class="step"><span class="n">4</span><div><b>Your safety summary</b><span>Save or share it with someone you trust</span></div></div>
+              </div>
             </div>''',
         },
     ],

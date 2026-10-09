@@ -27,21 +27,24 @@
     grid.appendChild(frag);
   });
 
-  // Fade sections in as they scroll into view.
-  const revealables = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && !reduceMotion) {
-    const io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add("in");
-          io.unobserve(e.target);
-        }
-      });
-    }, { rootMargin: "0px 0px -60px 0px" });
-    revealables.forEach(function (el) { io.observe(el); });
-  } else {
-    revealables.forEach(function (el) { el.classList.add("in"); });
+  // Nav: spread out at the top of the page, a floating pill once you scroll.
+  const root = document.documentElement;
+  let popTimer;
+  function updateNav() {
+    const atTop = window.scrollY < 8;
+    if (atTop === root.classList.contains("nav-top")) return;
+    root.classList.toggle("nav-top", atTop);
+    // Pop the capsule as it forms.
+    root.classList.remove("nav-pop");
+    if (!atTop && !reduceMotion) {
+      void root.offsetWidth; // restart the animation
+      root.classList.add("nav-pop");
+      clearTimeout(popTimer);
+      popTimer = setTimeout(function () { root.classList.remove("nav-pop"); }, 700);
+    }
   }
+  updateNav();
+  window.addEventListener("scroll", updateNav, { passive: true });
 
   // ---------- Waitlist ----------
   // The endpoint lives in <meta name="waitlist-endpoint">, set per build.

@@ -78,6 +78,7 @@ def head(app, title, description):
   <link rel="apple-touch-icon" href="assets/app-icon.svg">
 {FONTS}  <link rel="stylesheet" href="assets/styles.css">
   <style>:root {{ --brand: {app["brand"]}; --brand-2: {app["brand2"]}; }}</style>
+  <script>if (scrollY < 8) document.documentElement.classList.add("nav-top");</script>
 </head>
 '''
 
@@ -151,7 +152,7 @@ def card(f):
     style = f' style="--k: var(--accent-{f["color"]})"'
     media_cls = f' {f["media_class"]}' if f.get("media_class") else ""
     extra = f' {f["class"]}' if f.get("class") else ""
-    return f'''        <figure class="card {f["size"]}{extra} reveal"{style}>
+    return f'''        <figure class="card {f["size"]}{extra}"{style}>
           <figcaption class="card-text">
             <span class="kicker">{esc(f["kicker"])}</span>
             <h2>{esc(f["title"])}</h2>
@@ -166,11 +167,11 @@ def card(f):
 
 def build_index(app):
     features = "".join(card(f) for f in app["features"])
-    faq = "\n".join(f'''        <div class="faq-item reveal">
+    faq = "\n".join(f'''        <div class="faq-item">
           <h3>{esc(q)}</h3>
           <p>{esc(a)}</p>
         </div>''' for q, a in app["faq"])
-    values = "\n".join(f'''        <figure class="value reveal" style="--c: var(--accent-{color})">
+    values = "\n".join(f'''        <figure class="value" style="--c: var(--accent-{color})">
           <span class="badge icon">{icon}</span>
           <div><h3>{esc(t)}</h3><p>{esc(d)}</p></div>
         </figure>''' for icon, color, t, d in app["values"])
@@ -220,7 +221,7 @@ def build_index(app):
     </section>
 
     <!-- ===================== CTA ===================== -->
-    <section class="cta reveal">
+    <section class="cta">
       <div class="cta-inner">
         <img class="app-icon" src="assets/app-icon.svg" alt="{esc(app["name"])} app icon">
         <h2>{esc(app["cta_title"])}</h2>
@@ -234,7 +235,7 @@ def build_index(app):
 def build_release_notes(app):
     entries = []
     for e in app["release_notes"]:
-        entries.append(f'''      <article class="article reveal">
+        entries.append(f'''      <article class="article">
         <span class="date"><span class="version-tag">{esc(e["tag"])}</span>{esc(e["date"])}</span>
         <h1>{esc(e["title"])}</h1>
 {e["body"]}
@@ -250,7 +251,7 @@ def build_release_notes(app):
     <div class="article-list">
 {chr(10).join(entries)}
 
-      <article class="article reveal">
+      <article class="article">
         <h1>Roadmap</h1>
         <p>What we're working on, in order. Plans may change as we learn from early testers.</p>
         <div class="steps roadmap">
@@ -258,7 +259,7 @@ def build_release_notes(app):
         </div>
       </article>
 
-      <section class="article reveal" style="text-align: center">
+      <section class="article" style="text-align: center">
         <h2 style="margin-top: 0">Be first to try it</h2>
         <p>Join the waitlist and we'll email you when {esc(app["name"])} is ready.</p>
         {waitlist_form(app, "release-notes", center=True)}
@@ -275,7 +276,7 @@ def build_contact(app):
       <p>Questions, ideas or partnership requests. We read everything.</p>
     </div>
     <div class="article-list">
-      <section class="article reveal">
+      <section class="article">
         <h2 style="margin-top: 0">Get in touch</h2>
         <div class="contact-options">
           <a class="option" href="mailto:{email}" style="--c: var(--accent-blue)">
@@ -297,7 +298,7 @@ def build_contact(app):
         </div>
       </section>
 
-      <section class="article reveal">
+      <section class="article">
         <h2 style="margin-top: 0">Send a message</h2>
         <p>Fill this in and it'll open in your mail app, ready to send.</p>
         <form class="form" action="#" data-form="contact" data-mailto="{email}" data-app-name="{esc(app["name"])}">
@@ -372,13 +373,13 @@ def build_updates(app):
       <p>Hear first when {esc(app["name"])} launches, plus the occasional behind-the-scenes update.</p>
     </div>
     <div class="article-list">
-      <section class="article reveal">
+      <section class="article">
         <h2 style="margin-top: 0">Join the waitlist</h2>
         <p>One email when early access opens, and a few short updates along the way. No spam, unsubscribe anytime.</p>
         {waitlist_form(app, "updates")}
       </section>
 
-      <section class="article reveal">
+      <section class="article">
         <h2 style="margin-top: 0">What to expect</h2>
         <div class="steps roadmap">
           <div class="step done"><span class="n"><span class="icon">check</span></span><div><b>You join</b><span>Just your email. No account, no payment.</span></div></div>
@@ -387,7 +388,7 @@ def build_updates(app):
         </div>
       </section>
 
-      <section class="article reveal" style="text-align: center">
+      <section class="article" style="text-align: center">
         <h2 style="margin-top: 0">See where things stand</h2>
         <p>Read our progress and roadmap so far.</p>
         <p><a class="button" href="release-notes.html" style="align-self: center"><span class="icon">article</span>Read the release notes</a></p>

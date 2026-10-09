@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap">
   <link rel="stylesheet" href="assets/styles.css">
   <style>:root { --brand: var(--accent-orange); --brand-2: var(--accent-red); }</style>
+  <script>if (scrollY < 8) document.documentElement.classList.add("nav-top");</script>
 </head>
 <body>
   <div class="nav-spacer"></div>
@@ -98,19 +99,19 @@
         <h2 class="section-title">Every camera, called out<br>before you get there.</h2>
       </div>
       <div class="card-grid">
-        <figure class="card two-thirds reveal" style="--k: var(--accent-orange)">
+        <figure class="card two-thirds" style="--k: var(--accent-orange)">
           <figcaption class="card-text">
             <span class="kicker">Live Activity</span>
             <h2>Always on your Lock Screen</h2>
             <p>The next camera, its limit and your distance stay on the Dynamic Island and Lock Screen. No switching apps mid-drive.</p>
           </figcaption>
           <div class="card-media">
-            <div class="vstack" style="max-width: 400px">
+            <div class="wallpaper bleed">
               <div class="island compact" style="position: static; transform: none; width: 190px">
                 <span class="la-sign sm">60</span>
                 <span class="rounded" style="font-weight: 700; font-size: 15px">850 m</span>
               </div>
-              <div class="live-activity" style="max-width: 400px">
+              <div class="live-activity">
                 <div class="la-row">
                   <span class="la-sign">80</span>
                   <div class="la-main"><b>Average speed zone</b><span>Next 4.2 km</span></div>
@@ -122,7 +123,7 @@
             </div>
           </div>
         </figure>
-        <figure class="card third reveal" style="--k: var(--accent-red)">
+        <figure class="card third" style="--k: var(--accent-red)">
           <figcaption class="card-text">
             <span class="kicker">Proximity alerts</span>
             <h2>Heard and seen</h2>
@@ -135,7 +136,7 @@
             </div>
           </div>
         </figure>
-        <figure class="card half reveal" style="--k: var(--accent-green)">
+        <figure class="card half" style="--k: var(--accent-green)">
           <figcaption class="card-text">
             <span class="kicker">Speed advisory</span>
             <h2>Knows when you&#x27;re too fast</h2>
@@ -153,7 +154,7 @@
             </div>
           </div>
         </figure>
-        <figure class="card half reveal" style="--k: var(--accent-blue)">
+        <figure class="card half" style="--k: var(--accent-blue)">
           <figcaption class="card-text">
             <span class="kicker">Community reports</span>
             <h2>Drivers looking out for drivers</h2>
@@ -167,20 +168,25 @@
             </div>
           </div>
         </figure>
-        <figure class="card third reveal" style="--k: var(--accent-purple)">
+        <figure class="card third" style="--k: var(--accent-purple)">
           <figcaption class="card-text">
             <span class="kicker">Your distance</span>
             <h2>Warnings when you want them</h2>
-            <p>Pick how early you&#x27;d like to hear about a camera.</p>
+            <p>Choose how early you hear about a camera, and how you&#x27;re told.</p>
           </figcaption>
           <div class="card-media">
-            <div class="vstack">
+            <div class="settings">
+              <span class="ui-label">Warn me at</span>
               <div class="segmented"><span>500 m</span><span>1 km</span><span class="on">2 km</span></div>
-              <div class="segmented"><span class="on">Sound</span><span>Voice</span><span>Silent</span></div>
+              <div class="list">
+                <div class="set-row"><span class="badge icon" style="--c: var(--accent-purple)">record_voice_over</span><span class="lbl">Spoken warnings</span><span class="toggle on"></span></div>
+                <div class="set-row"><span class="badge icon" style="--c: var(--accent-blue)">local_police</span><span class="lbl">Police reports</span><span class="toggle on"></span></div>
+                <div class="set-row"><span class="badge icon" style="--c: var(--accent-orange)">speed</span><span class="lbl">Mobile cameras</span><span class="toggle"></span></div>
+              </div>
             </div>
           </div>
         </figure>
-        <figure class="card two-thirds reveal" style="--k: var(--accent-red)">
+        <figure class="card two-thirds" style="--k: var(--accent-red)">
           <figcaption class="card-text">
             <span class="kicker">Starting in Bali</span>
             <h2>Built on a verified camera map</h2>
@@ -207,19 +213,19 @@
     <section class="section reviews-section">
       <h2 class="reviews-title">Questions, answered</h2>
       <div class="faq">
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Does this help me speed without getting caught?</h3>
           <p>No. Lotus G-1 is built for careful drivers who want to stay within the limit. It reminds you of the limit ahead so you can slow down in good time.</p>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Where will it work?</h3>
           <p>We&#x27;re starting with Bali, Indonesia, and will add more regions as we build out the camera database.</p>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Do I need to keep the app open?</h3>
           <p>No. Alerts run as a Live Activity on your Lock Screen and Dynamic Island, so you can keep using Maps or music.</p>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Is using camera alerts legal?</h3>
           <p>Camera alert apps are legal in many countries, but not everywhere. Please check the rules where you drive. We&#x27;ll only offer the app where it&#x27;s allowed.</p>
         </div>
@@ -233,15 +239,15 @@
         <h2 class="section-title">Built for calm, careful driving</h2>
       </div>
       <div class="values">
-        <figure class="value reveal" style="--c: var(--accent-orange)">
+        <figure class="value" style="--c: var(--accent-orange)">
           <span class="badge icon">visibility</span>
           <div><h3>Eyes on the road</h3><p>Glanceable alerts and spoken warnings mean you never need to pick up your phone.</p></div>
         </figure>
-        <figure class="value reveal" style="--c: var(--accent-blue)">
+        <figure class="value" style="--c: var(--accent-blue)">
           <span class="badge icon">lock</span>
           <div><h3>Private by default</h3><p>Your location is used on your device to find cameras near you. We don&#x27;t sell where you drive.</p></div>
         </figure>
-        <figure class="value reveal" style="--c: var(--accent-green)">
+        <figure class="value" style="--c: var(--accent-green)">
           <span class="badge icon">groups</span>
           <div><h3>Community powered</h3><p>Reports from fellow drivers keep the map fresh, with confirmations to cut out noise.</p></div>
         </figure>
@@ -249,7 +255,7 @@
     </section>
 
     <!-- ===================== CTA ===================== -->
-    <section class="cta reveal">
+    <section class="cta">
       <div class="cta-inner">
         <img class="app-icon" src="assets/app-icon.svg" alt="Lotus G-1 app icon">
         <h2>Drive with fewer surprises</h2>

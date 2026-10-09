@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap">
   <link rel="stylesheet" href="assets/styles.css">
   <style>:root { --brand: var(--accent-red); --brand-2: var(--accent-orange); }</style>
+  <script>if (scrollY < 8) document.documentElement.classList.add("nav-top");</script>
 </head>
 <body>
   <div class="nav-spacer"></div>
@@ -92,7 +93,7 @@
         <h2 class="section-title">Stay informed.<br>Skip the noise.</h2>
       </div>
       <div class="card-grid">
-        <figure class="card two-thirds reveal" style="--k: var(--accent-red)">
+        <figure class="card two-thirds" style="--k: var(--accent-red)">
           <figcaption class="card-text">
             <span class="kicker">Bite-sized cards</span>
             <h2>Every story in under 15 seconds</h2>
@@ -100,37 +101,47 @@
           </figcaption>
           <div class="card-media">
             <div class="card-stack">
+              <div class="news-card back" aria-hidden="true">
+                <div class="nc-top"><span class="pill" style="--c: var(--accent-blue)">Local</span><span class="ui-sub">10 sec read</span></div>
+                <h4>Night market returns to the old town square</h4>
+                <p>Stalls open every Friday from next week, with streets closed to traffic after 6pm.</p>
+              </div>
               <div class="news-card">
-                <div class="nc-top"><span class="pill" style="--c: var(--accent-orange)">World</span><span class="ui-sub">8 sec read</span></div>
+                <div class="nc-top"><span class="pill" style="--c: var(--accent-orange)">World</span><span class="pill solid" style="--c: var(--accent-red)"><span class="icon">timer</span>8 sec</span></div>
                 <h4>Leaders agree on a new plan to protect coral reefs</h4>
                 <p>The agreement sets shared targets for reef protection and funds local monitoring programs over the next decade.</p>
                 <div class="nc-foot"><div class="sources"><span style="--c: var(--accent-blue)">A</span><span style="--c: var(--accent-orange)">B</span><span style="--c: var(--accent-purple)">C</span></div><span>Tap for more</span></div>
               </div>
-              <div class="news-card" aria-hidden="true"><h4>&nbsp;</h4></div>
             </div>
           </div>
         </figure>
-        <figure class="card third reveal" style="--k: var(--accent-green)">
+        <figure class="card third" style="--k: var(--accent-green)">
           <figcaption class="card-text">
             <span class="kicker">Multi-source checks</span>
             <h2>Checked before you see it</h2>
             <p>Stories are compared across outlets, and we show you how many independent sources agree.</p>
           </figcaption>
           <div class="card-media">
-            <div class="vstack" style="max-width: 240px">
-              <div class="stat-tile" style="width: 100%; text-align: center"><div class="num" style="color: var(--accent-green)">4<small>of 4</small></div><div class="lbl">Sources agree</div></div>
-              <div class="meter" style="width: 100%"><i style="--w: 100%; --c: var(--accent-green)"></i></div>
-              <span class="pill" style="--c: var(--accent-orange)"><span class="icon">info</span>Still developing</span>
+            <div class="list" style="max-width: 260px">
+              <div class="list-head"><span>Reef protection plan</span><span style="color: var(--accent-green)">3 of 4 agree</span></div>
+              <div class="list-row"><span class="badge solid" style="--c: var(--accent-blue); font-size: 13px; font-weight: 700">A</span><div class="main"><b>Source A</b><span>Matches</span></div><span class="trail icon" style="color: var(--accent-green)">check_circle</span></div>
+              <div class="list-row"><span class="badge solid" style="--c: var(--accent-orange); font-size: 13px; font-weight: 700">B</span><div class="main"><b>Source B</b><span>Matches</span></div><span class="trail icon" style="color: var(--accent-green)">check_circle</span></div>
+              <div class="list-row"><span class="badge solid" style="--c: var(--accent-purple); font-size: 13px; font-weight: 700">C</span><div class="main"><b>Source C</b><span>Matches</span></div><span class="trail icon" style="color: var(--accent-green)">check_circle</span></div>
+              <div class="list-row"><span class="badge solid" style="--c: var(--accent-pink); font-size: 13px; font-weight: 700">D</span><div class="main"><b>Source D</b><span>Different funding figure</span></div><span class="pill" style="--c: var(--accent-orange)">Check</span></div>
             </div>
           </div>
         </figure>
-        <figure class="card half reveal" style="--k: var(--accent-blue)">
+        <figure class="card half" style="--k: var(--accent-blue)">
           <figcaption class="card-text">
             <span class="kicker">Made for you</span>
             <h2>Your place, your interests</h2>
             <p>Your feed is tuned to where you live and the topics you pick. Local news included, clickbait left out.</p>
           </figcaption>
           <div class="card-media">
+            <div class="vstack" style="gap: 16px">
+            <div class="list" style="max-width: 300px">
+              <div class="list-row"><span class="badge solid icon" style="--c: var(--accent-blue)">near_me</span><div class="main"><b>Denpasar, Bali</b><span>Local stories within 25 km</span></div><span class="toggle on"></span></div>
+            </div>
             <div class="units">
               <span class="unit-chip" style="--c: var(--accent-blue)"><span class="icon">location_on</span>Local</span>
               <span class="unit-chip" style="--c: var(--accent-purple)"><span class="icon">memory</span>Tech</span>
@@ -139,9 +150,10 @@
               <span class="unit-chip" style="--c: var(--accent-pink)"><span class="icon">payments</span>Money</span>
               <span class="unit-chip dashed"><span class="icon">add</span>More</span>
             </div>
+            </div>
           </div>
         </figure>
-        <figure class="card half reveal" style="--k: var(--accent-purple)">
+        <figure class="card half" style="--k: var(--accent-purple)">
           <figcaption class="card-text">
             <span class="kicker">Tap to expand</span>
             <h2>Go deeper in one tap</h2>
@@ -149,6 +161,7 @@
           </figcaption>
           <div class="card-media">
             <div class="list" style="max-width: 320px">
+              <div class="list-head" style="flex-direction: column; align-items: flex-start; gap: 2px; padding: 12px"><span class="ui-label">Full story</span><b style="font-size: 14px; color: var(--color-text-primary)">Leaders agree on a new plan to protect coral reefs</b></div>
               <div class="list-row"><span class="badge solid icon" style="--c: var(--accent-blue)">article</span><div class="main"><b>Source A</b><span>Full report · 4 min read</span></div><span class="trail icon">open_in_new</span></div>
               <div class="list-row"><span class="badge solid icon" style="--c: var(--accent-orange)">article</span><div class="main"><b>Source B</b><span>Analysis · 6 min read</span></div><span class="trail icon">open_in_new</span></div>
               <div class="list-row"><span class="badge solid icon" style="--c: var(--accent-purple)">article</span><div class="main"><b>Source C</b><span>Live updates</span></div><span class="trail icon">open_in_new</span></div>
@@ -163,19 +176,19 @@
     <section class="section reviews-section">
       <h2 class="reviews-title">Questions, answered</h2>
       <div class="faq">
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Where does the news come from?</h3>
           <p>From established news outlets. Every story links back to its original sources, so you can always read the full reporting.</p>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>How do you check stories?</h3>
           <p>We compare how different outlets report the same event, and show you how many independent sources agree. Stories that are still developing are clearly labelled.</p>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Can I choose what I see?</h3>
           <p>Yes. Pick your topics and location, and your feed adapts. You&#x27;ll still see major stories everyone should know about.</p>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Will there be ads?</h3>
           <p>We&#x27;re planning a calm, ad-free experience. We&#x27;ll share details on pricing closer to launch.</p>
         </div>
@@ -189,15 +202,15 @@
         <h2 class="section-title">News you can trust</h2>
       </div>
       <div class="values">
-        <figure class="value reveal" style="--c: var(--accent-green)">
+        <figure class="value" style="--c: var(--accent-green)">
           <span class="badge icon">fact_check</span>
           <div><h3>Sources first</h3><p>Every story shows where it came from and how many sources agree.</p></div>
         </figure>
-        <figure class="value reveal" style="--c: var(--accent-red)">
+        <figure class="value" style="--c: var(--accent-red)">
           <span class="badge icon">timer</span>
           <div><h3>Respect your time</h3><p>Short by design. Read the day&#x27;s news in a couple of minutes.</p></div>
         </figure>
-        <figure class="value reveal" style="--c: var(--accent-blue)">
+        <figure class="value" style="--c: var(--accent-blue)">
           <span class="badge icon">block</span>
           <div><h3>No clickbait</h3><p>Plain headlines that tell you what happened, not what to feel.</p></div>
         </figure>
@@ -205,7 +218,7 @@
     </section>
 
     <!-- ===================== CTA ===================== -->
-    <section class="cta reveal">
+    <section class="cta">
       <div class="cta-inner">
         <img class="app-icon" src="assets/app-icon.svg" alt="Lotus E-3 app icon">
         <h2>Get the news that matters</h2>

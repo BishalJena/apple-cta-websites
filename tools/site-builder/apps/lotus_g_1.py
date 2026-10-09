@@ -51,12 +51,12 @@ APP = {
             "size": "two-thirds", "color": "orange", "kicker": "Live Activity",
             "title": "Always on your Lock Screen",
             "text": "The next camera, its limit and your distance stay on the Dynamic Island and Lock Screen. No switching apps mid-drive.",
-            "media": '''            <div class="vstack" style="max-width: 400px">
+            "media": '''            <div class="wallpaper bleed">
               <div class="island compact" style="position: static; transform: none; width: 190px">
                 <span class="la-sign sm">60</span>
                 <span class="rounded" style="font-weight: 700; font-size: 15px">850 m</span>
               </div>
-              <div class="live-activity" style="max-width: 400px">
+              <div class="live-activity">
                 <div class="la-row">
                   <span class="la-sign">80</span>
                   <div class="la-main"><b>Average speed zone</b><span>Next 4.2 km</span></div>
@@ -103,10 +103,15 @@ APP = {
         {
             "size": "third", "color": "purple", "kicker": "Your distance",
             "title": "Warnings when you want them",
-            "text": "Pick how early you'd like to hear about a camera.",
-            "media": '''            <div class="vstack">
+            "text": "Choose how early you hear about a camera, and how you're told.",
+            "media": '''            <div class="settings">
+              <span class="ui-label">Warn me at</span>
               <div class="segmented"><span>500 m</span><span>1 km</span><span class="on">2 km</span></div>
-              <div class="segmented"><span class="on">Sound</span><span>Voice</span><span>Silent</span></div>
+              <div class="list">
+                <div class="set-row"><span class="badge icon" style="--c: var(--accent-purple)">record_voice_over</span><span class="lbl">Spoken warnings</span><span class="toggle on"></span></div>
+                <div class="set-row"><span class="badge icon" style="--c: var(--accent-blue)">local_police</span><span class="lbl">Police reports</span><span class="toggle on"></span></div>
+                <div class="set-row"><span class="badge icon" style="--c: var(--accent-orange)">speed</span><span class="lbl">Mobile cameras</span><span class="toggle"></span></div>
+              </div>
             </div>''',
         },
         {

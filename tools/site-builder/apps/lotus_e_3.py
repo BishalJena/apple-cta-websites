@@ -46,36 +46,47 @@ APP = {
             "title": "Every story in under 15 seconds",
             "text": "Each story is summarised into a few clear lines, so you can catch up on the day while your coffee brews.",
             "media": '''            <div class="card-stack">
+              <div class="news-card back" aria-hidden="true">
+                <div class="nc-top"><span class="pill" style="--c: var(--accent-blue)">Local</span><span class="ui-sub">10 sec read</span></div>
+                <h4>Night market returns to the old town square</h4>
+                <p>Stalls open every Friday from next week, with streets closed to traffic after 6pm.</p>
+              </div>
               <div class="news-card">
-                <div class="nc-top"><span class="pill" style="--c: var(--accent-orange)">World</span><span class="ui-sub">8 sec read</span></div>
+                <div class="nc-top"><span class="pill" style="--c: var(--accent-orange)">World</span><span class="pill solid" style="--c: var(--accent-red)"><span class="icon">timer</span>8 sec</span></div>
                 <h4>Leaders agree on a new plan to protect coral reefs</h4>
                 <p>The agreement sets shared targets for reef protection and funds local monitoring programs over the next decade.</p>
                 <div class="nc-foot"><div class="sources"><span style="--c: var(--accent-blue)">A</span><span style="--c: var(--accent-orange)">B</span><span style="--c: var(--accent-purple)">C</span></div><span>Tap for more</span></div>
               </div>
-              <div class="news-card" aria-hidden="true"><h4>&nbsp;</h4></div>
             </div>''',
         },
         {
             "size": "third", "color": "green", "kicker": "Multi-source checks",
             "title": "Checked before you see it",
             "text": "Stories are compared across outlets, and we show you how many independent sources agree.",
-            "media": '''            <div class="vstack" style="max-width: 240px">
-              <div class="stat-tile" style="width: 100%; text-align: center"><div class="num" style="color: var(--accent-green)">4<small>of 4</small></div><div class="lbl">Sources agree</div></div>
-              <div class="meter" style="width: 100%"><i style="--w: 100%; --c: var(--accent-green)"></i></div>
-              <span class="pill" style="--c: var(--accent-orange)"><span class="icon">info</span>Still developing</span>
+            "media": '''            <div class="list" style="max-width: 260px">
+              <div class="list-head"><span>Reef protection plan</span><span style="color: var(--accent-green)">3 of 4 agree</span></div>
+              <div class="list-row"><span class="badge solid" style="--c: var(--accent-blue); font-size: 13px; font-weight: 700">A</span><div class="main"><b>Source A</b><span>Matches</span></div><span class="trail icon" style="color: var(--accent-green)">check_circle</span></div>
+              <div class="list-row"><span class="badge solid" style="--c: var(--accent-orange); font-size: 13px; font-weight: 700">B</span><div class="main"><b>Source B</b><span>Matches</span></div><span class="trail icon" style="color: var(--accent-green)">check_circle</span></div>
+              <div class="list-row"><span class="badge solid" style="--c: var(--accent-purple); font-size: 13px; font-weight: 700">C</span><div class="main"><b>Source C</b><span>Matches</span></div><span class="trail icon" style="color: var(--accent-green)">check_circle</span></div>
+              <div class="list-row"><span class="badge solid" style="--c: var(--accent-pink); font-size: 13px; font-weight: 700">D</span><div class="main"><b>Source D</b><span>Different funding figure</span></div><span class="pill" style="--c: var(--accent-orange)">Check</span></div>
             </div>''',
         },
         {
             "size": "half", "color": "blue", "kicker": "Made for you",
             "title": "Your place, your interests",
             "text": "Your feed is tuned to where you live and the topics you pick. Local news included, clickbait left out.",
-            "media": '''            <div class="units">
+            "media": '''            <div class="vstack" style="gap: 16px">
+            <div class="list" style="max-width: 300px">
+              <div class="list-row"><span class="badge solid icon" style="--c: var(--accent-blue)">near_me</span><div class="main"><b>Denpasar, Bali</b><span>Local stories within 25 km</span></div><span class="toggle on"></span></div>
+            </div>
+            <div class="units">
               <span class="unit-chip" style="--c: var(--accent-blue)"><span class="icon">location_on</span>Local</span>
               <span class="unit-chip" style="--c: var(--accent-purple)"><span class="icon">memory</span>Tech</span>
               <span class="unit-chip" style="--c: var(--accent-green)"><span class="icon">eco</span>Climate</span>
               <span class="unit-chip" style="--c: var(--accent-orange)"><span class="icon">sports_soccer</span>Sport</span>
               <span class="unit-chip" style="--c: var(--accent-pink)"><span class="icon">payments</span>Money</span>
               <span class="unit-chip dashed"><span class="icon">add</span>More</span>
+            </div>
             </div>''',
         },
         {
@@ -83,6 +94,7 @@ APP = {
             "title": "Go deeper in one tap",
             "text": "Tap any story for the full article, the original sources, and how they compare.",
             "media": '''            <div class="list" style="max-width: 320px">
+              <div class="list-head" style="flex-direction: column; align-items: flex-start; gap: 2px; padding: 12px"><span class="ui-label">Full story</span><b style="font-size: 14px; color: var(--color-text-primary)">Leaders agree on a new plan to protect coral reefs</b></div>
               <div class="list-row"><span class="badge solid icon" style="--c: var(--accent-blue)">article</span><div class="main"><b>Source A</b><span>Full report · 4 min read</span></div><span class="trail icon">open_in_new</span></div>
               <div class="list-row"><span class="badge solid icon" style="--c: var(--accent-orange)">article</span><div class="main"><b>Source B</b><span>Analysis · 6 min read</span></div><span class="trail icon">open_in_new</span></div>
               <div class="list-row"><span class="badge solid icon" style="--c: var(--accent-purple)">article</span><div class="main"><b>Source C</b><span>Live updates</span></div><span class="trail icon">open_in_new</span></div>

@@ -63,17 +63,24 @@ APP = {
             "size": "third", "color": "blue", "kicker": "Photos and videos",
             "title": "Works on video too",
             "text": "Clean a single photo, a whole album, or a long video in one go.",
-            "media": '''            <div class="stat-tiles" style="grid-template-columns: 1fr">
-              <div class="stat-tile"><div class="num">48<small>photos</small></div><div class="lbl">Cleaned in 3 seconds</div></div>
-              <div class="stat-tile"><div class="num">2<small>videos</small></div><div class="lbl">Location and device removed</div></div>
+            "media": '''            <div class="vstack" style="max-width: 250px">
+              <div class="thumbs" aria-hidden="true">
+                <div class="photo sunset"><span class="ok icon">check</span></div>
+                <div class="photo p2"><span class="ok icon">check</span></div>
+                <div class="photo"><span class="play icon">play_arrow</span><span class="dur">0:42</span><span class="ok icon">check</span></div>
+                <div class="photo p3"><span class="ok icon">check</span></div>
+                <div class="photo p4"><span class="play icon">play_arrow</span><span class="dur">1:15</span><span class="ok icon">check</span></div>
+                <div class="photo sunset"><span class="ok icon">check</span></div>
+              </div>
+              <span class="pill" style="--c: var(--accent-green)"><span class="icon">check_circle</span>48 photos · 2 videos cleaned</span>
             </div>''',
         },
         {
             "size": "half", "color": "purple", "kicker": "Share sheet",
             "title": "Clean as you share",
             "text": "Pick Lotus E-1 from the share sheet and a clean copy goes straight to your favourite app. Your original stays untouched.",
-            "media": '''            <div class="panel" style="max-width: 340px">
-              <div class="ui-label">Share</div>
+            "media": '''            <div class="panel" style="max-width: 340px; gap: 12px">
+              <div class="result-head"><div class="photo sunset" style="width: 52px; aspect-ratio: 1; border-radius: 10px; flex: none"></div><div style="flex: 1"><b style="font-size: 14px">1 photo selected</b><div class="ui-sub">Original stays in your library</div></div></div>
               <div class="hstack" style="justify-content: space-between; flex-wrap: nowrap">
                 <span class="eco-tile icon" style="--c: var(--accent-mint); width: 52px; height: 52px; font-size: 26px; border-radius: 14px">auto_fix_high</span>
                 <span class="eco-tile icon" style="--c: var(--accent-green); width: 52px; height: 52px; font-size: 26px; border-radius: 14px">chat</span>
@@ -87,8 +94,16 @@ APP = {
             "size": "half", "color": "green", "kicker": "On-device",
             "title": "Your photos never leave your iPhone",
             "text": "Everything happens on your device. No uploads, no account, no cloud processing.",
-            "media": '''            <div class="radar" aria-hidden="true" style="max-width: 200px">
-              <span class="core icon">smartphone</span>
+            "media": '''            <div class="vstack" style="gap: 18px">
+              <div class="no-upload" aria-hidden="true">
+                <span class="tile icon" style="--c: var(--accent-mint)">smartphone</span>
+                <span class="link"><span class="icon">close</span></span>
+                <span class="tile off icon">cloud_off</span>
+              </div>
+              <div class="stat-tiles" style="max-width: 300px">
+                <div class="stat-tile"><div class="num">0<small>bytes</small></div><div class="lbl">Uploaded</div></div>
+                <div class="stat-tile"><div class="num">0</div><div class="lbl">Accounts needed</div></div>
+              </div>
             </div>''',
         },
     ],

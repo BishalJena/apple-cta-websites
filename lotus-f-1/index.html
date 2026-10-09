@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap">
   <link rel="stylesheet" href="assets/styles.css">
   <style>:root { --brand: var(--accent-pink); --brand-2: var(--accent-purple); }</style>
+  <script>if (scrollY < 8) document.documentElement.classList.add("nav-top");</script>
 </head>
 <body>
   <div class="nav-spacer"></div>
@@ -92,7 +93,7 @@
         <h2 class="section-title">Know who else<br>might be watching.</h2>
       </div>
       <div class="card-grid">
-        <figure class="card two-thirds reveal" style="--k: var(--accent-pink)">
+        <figure class="card two-thirds" style="--k: var(--accent-pink)">
           <figcaption class="card-text">
             <span class="kicker">Hidden network scanner</span>
             <h2>Finds what&#x27;s hiding on the Wi-Fi</h2>
@@ -106,7 +107,7 @@
             </div>
           </div>
         </figure>
-        <figure class="card third reveal" style="--k: var(--accent-red)">
+        <figure class="card third" style="--k: var(--accent-red)">
           <figcaption class="card-text">
             <span class="kicker">Spy camera detection</span>
             <h2>Spots the lens</h2>
@@ -120,20 +121,23 @@
             </div>
           </div>
         </figure>
-        <figure class="card half reveal" style="--k: var(--accent-orange)">
+        <figure class="card half" style="--k: var(--accent-orange)">
           <figcaption class="card-text">
             <span class="kicker">Safety alerts</span>
             <h2>Tells you straight away</h2>
             <p>Get an instant notification when possible surveillance hardware is detected nearby, with clear next steps.</p>
           </figcaption>
           <div class="card-media">
-            <div class="notif-stack">
-              <div class="notif"><img class="n-icon" src="assets/app-icon.svg" alt=""><div class="n-body"><div class="n-head"><b>Lotus F-1</b><time>now</time></div><p>Possible hidden camera nearby. Tap to see where to look.</p></div></div>
-              <div class="notif"><img class="n-icon" src="assets/app-icon.svg" alt=""><div class="n-body"><div class="n-head"><b>Lotus F-1</b><time>2 min ago</time></div><p>Room scan complete. 1 item to review.</p></div></div>
+            <div class="wallpaper bleed">
+              <div class="lock-time" style="font-size: 54px">22:14</div>
+              <div class="notif-stack">
+                <div class="notif"><img class="n-icon" src="assets/app-icon.svg" alt=""><div class="n-body"><div class="n-head"><b>Lotus F-1</b><time>now</time></div><p>Possible hidden camera nearby. Tap to see where to look.</p></div></div>
+                <div class="notif"><img class="n-icon" src="assets/app-icon.svg" alt=""><div class="n-body"><div class="n-head"><b>Lotus F-1</b><time>2m ago</time></div><p>Room scan complete. 1 item to review.</p></div></div>
+              </div>
             </div>
           </div>
         </figure>
-        <figure class="card half reveal" style="--k: var(--accent-purple)">
+        <figure class="card half" style="--k: var(--accent-purple)">
           <figcaption class="card-text">
             <span class="kicker">Wearables and smart devices</span>
             <h2>Notices recording wearables</h2>
@@ -147,18 +151,33 @@
             </div>
           </div>
         </figure>
-        <figure class="card full reveal" style="--k: var(--accent-green)">
+        <figure class="card full" style="--k: var(--accent-green)">
           <figcaption class="card-text">
             <span class="kicker">Guided check</span>
             <h2>A calm, step-by-step room check</h2>
             <p>Lotus F-1 walks you through the spots worth checking, like smoke detectors, chargers and mirrors, so nothing gets missed.</p>
           </figcaption>
           <div class="card-media">
-            <div class="steps" style="max-width: 440px">
-              <div class="step done"><span class="n"><span class="icon">check</span></span><div><b>Scan the networks</b><span>Wi-Fi and hidden networks checked</span></div></div>
-              <div class="step done"><span class="n"><span class="icon">check</span></span><div><b>Check Bluetooth and NFC</b><span>7 devices, 1 tag to review</span></div></div>
-              <div class="step now"><span class="n">3</span><div><b>Look around the room</b><span>Smoke detector, clock, chargers, mirrors</span></div></div>
-              <div class="step"><span class="n">4</span><div><b>Your safety summary</b><span>Save or share it with someone you trust</span></div></div>
+            <div class="split" style="max-width: 780px">
+              <div class="room" role="img" aria-label="Room floor plan with spots to check: smoke detector, TV, mirror and charger">
+                <svg viewBox="0 0 400 300" fill="none" stroke="color-mix(in srgb, var(--color-text-tertiary) 55%, transparent)" stroke-width="6" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M30 30h340v240H220M160 270H30Z"/>
+                  <rect x="60" y="70" width="130" height="150" rx="14" fill="var(--color-card)" stroke-width="3"/>
+                  <rect x="70" y="80" width="110" height="40" rx="10" fill="var(--color-inset)" stroke-width="2"/>
+                  <rect x="300" y="60" width="50" height="120" rx="8" fill="var(--color-card)" stroke-width="3"/>
+                  <rect x="250" y="220" width="90" height="30" rx="6" fill="var(--color-card)" stroke-width="3"/>
+                </svg>
+                <span class="spot" style="left: 50%; top: 14%; --c: var(--accent-green)"><span class="icon">check</span>Smoke detector</span>
+                <span class="spot" style="left: 80%; top: 42%; --c: var(--accent-orange)"><span class="icon">priority_high</span>TV</span>
+                <span class="spot" style="left: 30%; top: 86%; --c: var(--accent-green)"><span class="icon">check</span>Mirror</span>
+                <span class="spot" style="left: 74%; top: 78%"><span class="icon" style="background: var(--color-fill-3); color: var(--color-text-secondary)">more_horiz</span>Charger</span>
+              </div>
+              <div class="steps">
+                <div class="step done"><span class="n"><span class="icon">check</span></span><div><b>Scan the networks</b><span>Wi-Fi and hidden networks checked</span></div></div>
+                <div class="step done"><span class="n"><span class="icon">check</span></span><div><b>Check Bluetooth and NFC</b><span>7 devices, 1 tag to review</span></div></div>
+                <div class="step now"><span class="n">3</span><div><b>Look around the room</b><span>Smoke detector, TV, mirrors, chargers</span></div></div>
+                <div class="step"><span class="n">4</span><div><b>Your safety summary</b><span>Save or share it with someone you trust</span></div></div>
+              </div>
             </div>
           </div>
         </figure>
@@ -170,19 +189,19 @@
     <section class="section reviews-section">
       <h2 class="reviews-title">Questions, answered</h2>
       <div class="faq">
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>How does Lotus F-1 find hidden cameras?</h3>
           <p>Most hidden cameras need to send video somewhere, so they show up on Wi-Fi or Bluetooth. Lotus F-1 looks for unusual devices and hidden networks, then guides you through a physical check of common hiding spots.</p>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Can it find every device?</h3>
           <p>No scanner can promise that. Some devices record locally and never connect to anything. Lotus F-1 gives you a much better picture than looking around alone, and tells you what it couldn&#x27;t check.</p>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>What should I do if it finds something?</h3>
           <p>Don&#x27;t tamper with it. Take a photo, move somewhere you feel safe, and contact the property and local police. The app will show you clear next steps.</p>
         </div>
-        <div class="faq-item reveal">
+        <div class="faq-item">
           <h3>Does it work without internet?</h3>
           <p>Yes. Scanning happens on your iPhone, so it works wherever you are, even without a data plan.</p>
         </div>
@@ -196,15 +215,15 @@
         <h2 class="section-title">Made for women who travel</h2>
       </div>
       <div class="values">
-        <figure class="value reveal" style="--c: var(--accent-blue)">
+        <figure class="value" style="--c: var(--accent-blue)">
           <span class="badge icon">lock</span>
           <div><h3>Private by design</h3><p>Scans run on your iPhone. We don&#x27;t collect where you stay or what&#x27;s on the network.</p></div>
         </figure>
-        <figure class="value reveal" style="--c: var(--accent-pink)">
+        <figure class="value" style="--c: var(--accent-pink)">
           <span class="badge icon">support</span>
           <div><h3>Calm, not scary</h3><p>Clear results and practical next steps, not alarm bells for every device.</p></div>
         </figure>
-        <figure class="value reveal" style="--c: var(--accent-green)">
+        <figure class="value" style="--c: var(--accent-green)">
           <span class="badge icon">public</span>
           <div><h3>Works anywhere</h3><p>Hotels, rentals and hostels, at home or abroad, with or without data.</p></div>
         </figure>
@@ -212,7 +231,7 @@
     </section>
 
     <!-- ===================== CTA ===================== -->
-    <section class="cta reveal">
+    <section class="cta">
       <div class="cta-inner">
         <img class="app-icon" src="assets/app-icon.svg" alt="Lotus F-1 app icon">
         <h2>Travel with peace of mind</h2>

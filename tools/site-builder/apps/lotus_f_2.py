@@ -48,10 +48,13 @@ APP = {
             "size": "two-thirds", "color": "green", "kicker": "Private search",
             "title": "The same fare, wherever you search",
             "text": "Searches go through a private connection that hides your IP address and phone fingerprint, so prices aren't marked up for searching on a phone.",
-            "media": '''            <div class="compare" role="img" aria-label="Illustration: regular phone search $214, Lotus F-2 private search $168">
-              <div class="compare-row"><div class="top"><span>Regular phone search</span><b>$214</b></div><div class="bar"><i style="--w: 100%; --c: var(--color-fill-3)"></i></div></div>
-              <div class="compare-row"><div class="top"><span>Laptop search</span><b>$176</b></div><div class="bar"><i style="--w: 82%; --c: color-mix(in srgb, var(--accent-blue) 45%, transparent)"></i></div></div>
-              <div class="compare-row"><div class="top"><span style="color: var(--accent-green)">Lotus F-2 private search</span><b style="color: var(--accent-green)">$168</b></div><div class="bar"><i style="--w: 78%; --c: var(--accent-green)"></i></div></div>
+            "media": '''            <div class="panel" style="max-width: 420px; gap: 14px">
+              <div class="chart-head" style="align-items: center"><span class="label">Hidden from booking sites</span><span class="pill" style="--c: var(--accent-green)"><span class="icon">shield</span>Private search on</span></div>
+              <div class="masked"><span><span class="icon">public</span>IP address</span><span><span class="icon">smartphone</span>Device model</span><span><span class="icon">location_on</span>Location</span><span><span class="icon">cookie</span>Cookies</span></div>
+              <div class="compare" role="img" aria-label="Illustration: regular phone search $214, Lotus F-2 private search $168" style="max-width: none">
+                <div class="compare-row"><div class="top"><span>Regular phone search</span><b>$214</b></div><div class="bar"><i style="--w: 100%; --c: var(--color-fill-3)"></i></div></div>
+                <div class="compare-row"><div class="top"><span style="color: var(--accent-green)">Lotus F-2 private search</span><b style="color: var(--accent-green)">$168</b></div><div class="bar"><i style="--w: 78%; --c: var(--accent-green)"></i></div></div>
+              </div>
               <span class="ui-sub">Example prices for illustration</span>
             </div>''',
         },
@@ -60,6 +63,7 @@ APP = {
             "title": "Every fare in one place",
             "text": "Compares prices across airlines and booking sites, side by side.",
             "media": '''            <div class="list" style="max-width: 260px">
+              <div class="list-head"><span>DPS → SIN · Fri 14 Nov</span><span>12 sites</span></div>
               <div class="fare best"><span class="al" style="--c: var(--accent-blue)">CA</span><div class="times"><b>Coral Air</b><span>Direct · 2h 35m</span></div><div class="price">$168</div></div>
               <div class="fare"><span class="al" style="--c: var(--accent-orange)">SJ</span><div class="times"><b>Sunda Jet</b><span>Direct · 2h 40m</span></div><div class="price">$181</div></div>
               <div class="fare"><span class="al" style="--c: var(--accent-purple)">TA</span><div class="times"><b>Tern Airways</b><span>1 stop · 4h 25m</span></div><div class="price">$157</div></div>
@@ -70,6 +74,7 @@ APP = {
             "title": "Every document, for your exact route",
             "text": "Visas, entry cards, health forms and more, tailored to where you're flying from and to.",
             "media": '''            <div class="list" style="max-width: 340px">
+              <div class="list-head" style="flex-direction: column; align-items: stretch; gap: 6px"><div style="display: flex; justify-content: space-between"><span>Singapore entry</span><span style="color: var(--accent-green)">2 of 4 ready</span></div><div class="meter"><i style="--w: 50%; --c: var(--accent-green)"></i></div></div>
               <div class="check-row done"><span class="box icon">check</span><div class="main"><b>Passport</b><span>Valid until March 2031</span></div></div>
               <div class="check-row done"><span class="box icon">check</span><div class="main"><b>Return ticket</b><span>Booked</span></div></div>
               <div class="check-row"><span class="box todo icon">check</span><div class="main"><b>Arrival card</b><span>Submit online, 3 days before</span></div><span class="pill" style="--c: var(--accent-orange)">To do</span></div>
@@ -80,10 +85,18 @@ APP = {
             "size": "half", "color": "purple", "kicker": "Step-by-step guidance",
             "title": "No surprises at the airport",
             "text": "Simple steps and reminders for check-in, security and immigration, so you're never left guessing.",
-            "media": '''            <div class="steps">
+            "media": '''            <div class="vstack" style="gap: 18px; max-width: 340px">
+            <div class="ticket" aria-hidden="true">
+              <div class="ticket-top">
+                <div class="route"><div><div class="code">DPS</div><div class="city">Denpasar</div></div><div class="line"><span class="icon">flight</span></div><div style="text-align: right"><div class="code">SIN</div><div class="city">Singapore</div></div></div>
+              </div>
+              <div class="ticket-bottom"><div><span>Boarding</span><b>07:35</b></div><div><span>Gate</span><b>D4</b></div><div><span>Seat</span><b>14A</b></div></div>
+            </div>
+            <div class="steps">
               <div class="step done"><span class="n"><span class="icon">check</span></span><div><b>Online check-in</b><span>Opens 48 hours before</span></div></div>
               <div class="step now"><span class="n">2</span><div><b>Bag drop by 06:15</b><span>Terminal 2 · Counter D</span></div></div>
               <div class="step"><span class="n">3</span><div><b>Immigration</b><span>Have your arrival card ready</span></div></div>
+            </div>
             </div>''',
         },
     ],
