@@ -1494,3 +1494,86 @@ textarea.input { min-height: 150px; resize: vertical; line-height: 1.5; }
 .no-upload .tile.off { background: var(--color-inset); color: var(--color-text-tertiary); box-shadow: inset 0 0 0 1px var(--color-hairline); }
 .no-upload .link { width: 70px; height: 2px; position: relative; background: repeating-linear-gradient(90deg, var(--color-fill-3) 0 6px, transparent 6px 10px); }
 .no-upload .link .icon { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 16px; color: #fff; background: var(--accent-red); }
+
+/* ==========================================================================
+   Screenshot slots (Dayline layout)
+   ========================================================================== */
+.shot {
+  position: relative;
+  width: 100%; height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+  display: grid; place-items: center;
+  background:
+    radial-gradient(90% 60% at 20% 0%, color-mix(in srgb, var(--brand) 16%, transparent), transparent 70%),
+    radial-gradient(80% 60% at 100% 100%, color-mix(in srgb, var(--brand-2) 14%, transparent), transparent 70%),
+    var(--color-fill-1);
+}
+.shot > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.shot-ph { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px; text-align: center; }
+.shot-ph .app-icon { width: 46px; height: 46px; border-radius: 12px; box-shadow: 0 8px 20px -8px rgb(0 0 0 / 0.35); }
+.shot-ph b { font-size: 14px; font-weight: 600; line-height: 1.3; color: var(--color-text-secondary); max-width: 18ch; text-wrap: balance; }
+.shot-ph code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10.5px; letter-spacing: 0;
+  padding: 3px 8px; border-radius: 6px;
+  color: var(--color-text-tertiary);
+  background: var(--color-hairline);
+  max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+/* Hero phone holding a screenshot: no inner padding, island floats on top */
+.phone-screen.has-shot { padding: 0; }
+.phone-screen.has-shot::before { z-index: 2; }
+.phone-screen.has-shot .shot-ph { padding-top: 40px; }
+
+/* Smaller phones that peek up from the bottom of feature cards */
+.mini-phone {
+  width: 236px;
+  flex: none;
+  aspect-ratio: 9 / 19.3;
+  border-radius: 42px;
+  padding: 9px;
+  background: linear-gradient(145deg, #3a3a3e, #1a1a1c 40%, #2a2a2d);
+  box-shadow: inset 0 0 0 1.5px rgb(255 255 255 / 0.12), 0 0 0 1px rgb(0 0 0 / 0.2), 0 24px 50px -20px rgb(16 16 32 / 0.4);
+  position: relative;
+}
+.mini-phone .shot { border-radius: 34px; }
+.mini-phone::before {
+  content: ""; position: absolute; z-index: 2;
+  top: 19px; left: 50%; transform: translateX(-50%);
+  width: 70px; height: 21px; border-radius: 12px; background: #000;
+}
+.mini-phone .shot-ph { padding-top: 36px; }
+
+.card-media.peek {
+  flex: none;
+  height: 330px;
+  padding: 30px 24px 0;
+  align-items: flex-start;
+  overflow: hidden;
+  gap: 22px;
+}
+.card-media.peek-2 .mini-phone:nth-child(2) { margin-top: 44px; }
+.card-media.peek-3 .mini-phone:nth-child(1),
+.card-media.peek-3 .mini-phone:nth-child(3) { margin-top: 44px; }
+.card.full .card-media.peek { height: 360px; padding-top: 36px; padding-bottom: 0; }
+.card:has(.peek) { min-height: 0; }
+.card:has(.peek) .card-text { flex: 1; }
+
+@media (max-width: 860px) {
+  .card-media.peek-3 .mini-phone:nth-child(3) { display: none; }
+}
+@media (max-width: 680px) {
+  .card-media.peek { height: 300px; }
+  .card-media.peek-2 .mini-phone:nth-child(2),
+  .card-media.peek-3 .mini-phone:nth-child(3) { display: none; }
+  .card-media.peek-3 .mini-phone:nth-child(1) { display: none; }
+  .card-media.peek-3 .mini-phone:nth-child(2) { margin-top: 0; }
+  .mini-phone { width: 220px; }
+}
+.mini-phone .shot { place-items: start center; }
+.mini-phone .shot-ph { padding-top: 74px; }
+.waitlist-status:empty { min-height: 0; margin-top: 0; }
+.hero .waitlist-wrap + .hero-note { margin-top: -12px; }
+.shot-ph code { white-space: normal; word-break: break-all; text-align: center; line-height: 1.4; max-width: 170px; }

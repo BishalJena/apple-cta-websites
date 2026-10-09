@@ -14,91 +14,48 @@ APP = {
     "status": "Coming to iPhone",
     "h1": "The news,<br>in 15 seconds",
     "sub": "Short, clear stories checked across multiple sources, tuned to where you are and what you care about. Tap any story to go deeper.",
-    "hero": '''        <div class="phone" role="img" aria-label="Lotus E-3 news feed with short story cards marked as checked across sources">
-          <div class="phone-screen ui">
-            <div class="screen-header"><h3>Today</h3><span><span class="icon" style="font-size: 13px; vertical-align: -2px">location_on</span> Denpasar</span></div>
-            <div class="news-card" style="--c: var(--accent-blue)">
-              <div class="photo" style="aspect-ratio: 16 / 6; border-radius: 12px"></div>
-              <div class="nc-top"><span class="pill" style="--c: var(--accent-blue)">Local</span><span class="pill" style="--c: var(--accent-green)"><span class="icon">verified</span>4 sources agree</span></div>
-              <h4>New bus line connects the airport and Ubud from next month</h4>
-              <div class="nc-foot"><div class="sources"><span style="--c: var(--accent-blue)">A</span><span style="--c: var(--accent-orange)">B</span><span style="--c: var(--accent-purple)">C</span><span style="--c: var(--accent-green)">D</span></div><span>12 sec read</span></div>
-            </div>
-            <div class="news-card">
-              <div class="nc-top"><span class="pill" style="--c: var(--accent-purple)">Tech</span><span class="pill" style="--c: var(--accent-green)"><span class="icon">verified</span>3 sources</span></div>
-              <h4>Phone makers agree on a longer software support standard</h4>
-              <div class="nc-foot"><span>9 sec read</span><span>Tap for more</span></div>
-            </div>
-            <div class="tabbar" aria-hidden="true"><span class="on"><span class="icon">newspaper</span>Today</span><span><span class="icon">tag</span>Topics</span><span><span class="icon">bookmark</span>Saved</span><span><span class="icon">settings</span>Settings</span></div>
-          </div>
-        </div>
-        <div class="float-chip chip-streak" aria-hidden="true">
-          <span class="chip-icon icon" style="--c: var(--accent-green)">fact_check</span>
-          <div><b class="rounded">Checked</b><small>Across 4 sources</small></div>
-        </div>
-        <div class="float-chip chip-done" aria-hidden="true">
-          <span class="chip-icon icon" style="--c: var(--accent-red)">timer</span>
-          <div><b class="rounded">12 sec</b><small>Per story</small></div>
-        </div>''',
+    "hero_shot": "Today's stories",
+    "hero_note": "No spam. Just one email when it's ready.",
+    "chips": [('fact_check', 'green', 'Checked', 'Across 4 sources'), ('timer', 'red', '12 sec', 'Per story')],
     "features_title": "Stay informed.<br>Skip the noise.",
     "features": [
         {
-            "size": "two-thirds", "color": "red", "kicker": "Bite-sized cards",
-            "title": "Every story in under 15 seconds",
-            "text": "Each story is summarised into a few clear lines, so you can catch up on the day while your coffee brews.",
-            "media": '''            <div class="card-stack">
-              <div class="news-card back" aria-hidden="true">
-                <div class="nc-top"><span class="pill" style="--c: var(--accent-blue)">Local</span><span class="ui-sub">10 sec read</span></div>
-                <h4>Night market returns to the old town square</h4>
-                <p>Stalls open every Friday from next week, with streets closed to traffic after 6pm.</p>
-              </div>
-              <div class="news-card">
-                <div class="nc-top"><span class="pill" style="--c: var(--accent-orange)">World</span><span class="pill solid" style="--c: var(--accent-red)"><span class="icon">timer</span>8 sec</span></div>
-                <h4>Leaders agree on a new plan to protect coral reefs</h4>
-                <p>The agreement sets shared targets for reef protection and funds local monitoring programs over the next decade.</p>
-                <div class="nc-foot"><div class="sources"><span style="--c: var(--accent-blue)">A</span><span style="--c: var(--accent-orange)">B</span><span style="--c: var(--accent-purple)">C</span></div><span>Tap for more</span></div>
-              </div>
-            </div>''',
+            "size": 'third', "color": 'green', "kicker": 'Multi-source checks',
+            "title": 'Checked before you see it',
+            "text": 'Stories are compared across outlets, and we show you how many independent sources agree.',
         },
         {
-            "size": "third", "color": "green", "kicker": "Multi-source checks",
-            "title": "Checked before you see it",
-            "text": "Stories are compared across outlets, and we show you how many independent sources agree.",
-            "media": '''            <div class="list" style="max-width: 260px">
-              <div class="list-head"><span>Reef protection plan</span><span style="color: var(--accent-green)">3 of 4 agree</span></div>
-              <div class="list-row"><span class="badge solid" style="--c: var(--accent-blue); font-size: 13px; font-weight: 700">A</span><div class="main"><b>Source A</b><span>Matches</span></div><span class="trail icon" style="color: var(--accent-green)">check_circle</span></div>
-              <div class="list-row"><span class="badge solid" style="--c: var(--accent-orange); font-size: 13px; font-weight: 700">B</span><div class="main"><b>Source B</b><span>Matches</span></div><span class="trail icon" style="color: var(--accent-green)">check_circle</span></div>
-              <div class="list-row"><span class="badge solid" style="--c: var(--accent-purple); font-size: 13px; font-weight: 700">C</span><div class="main"><b>Source C</b><span>Matches</span></div><span class="trail icon" style="color: var(--accent-green)">check_circle</span></div>
-              <div class="list-row"><span class="badge solid" style="--c: var(--accent-pink); font-size: 13px; font-weight: 700">D</span><div class="main"><b>Source D</b><span>Different funding figure</span></div><span class="pill" style="--c: var(--accent-orange)">Check</span></div>
-            </div>''',
+            "size": 'two-thirds', "color": 'red', "kicker": 'Bite-sized cards',
+            "title": 'Every story in under 15 seconds',
+            "text": 'Each story is summarised into a few clear lines, so you can catch up while your coffee brews.',
+            "shots": ['Story card', 'Story feed'],
         },
         {
-            "size": "half", "color": "blue", "kicker": "Made for you",
-            "title": "Your place, your interests",
-            "text": "Your feed is tuned to where you live and the topics you pick. Local news included, clickbait left out.",
-            "media": '''            <div class="vstack" style="gap: 16px">
-            <div class="list" style="max-width: 300px">
-              <div class="list-row"><span class="badge solid icon" style="--c: var(--accent-blue)">near_me</span><div class="main"><b>Denpasar, Bali</b><span>Local stories within 25 km</span></div><span class="toggle on"></span></div>
-            </div>
-            <div class="units">
-              <span class="unit-chip" style="--c: var(--accent-blue)"><span class="icon">location_on</span>Local</span>
-              <span class="unit-chip" style="--c: var(--accent-purple)"><span class="icon">memory</span>Tech</span>
-              <span class="unit-chip" style="--c: var(--accent-green)"><span class="icon">eco</span>Climate</span>
-              <span class="unit-chip" style="--c: var(--accent-orange)"><span class="icon">sports_soccer</span>Sport</span>
-              <span class="unit-chip" style="--c: var(--accent-pink)"><span class="icon">payments</span>Money</span>
-              <span class="unit-chip dashed"><span class="icon">add</span>More</span>
-            </div>
-            </div>''',
+            "size": 'half', "color": 'blue', "kicker": 'Made for you',
+            "title": 'Your place, your interests',
+            "text": 'Your feed is tuned to where you live and the topics you pick. Local news included, clickbait left out.',
         },
         {
-            "size": "half", "color": "purple", "kicker": "Tap to expand",
-            "title": "Go deeper in one tap",
-            "text": "Tap any story for the full article, the original sources, and how they compare.",
-            "media": '''            <div class="list" style="max-width: 320px">
-              <div class="list-head" style="flex-direction: column; align-items: flex-start; gap: 2px; padding: 12px"><span class="ui-label">Full story</span><b style="font-size: 14px; color: var(--color-text-primary)">Leaders agree on a new plan to protect coral reefs</b></div>
-              <div class="list-row"><span class="badge solid icon" style="--c: var(--accent-blue)">article</span><div class="main"><b>Source A</b><span>Full report · 4 min read</span></div><span class="trail icon">open_in_new</span></div>
-              <div class="list-row"><span class="badge solid icon" style="--c: var(--accent-orange)">article</span><div class="main"><b>Source B</b><span>Analysis · 6 min read</span></div><span class="trail icon">open_in_new</span></div>
-              <div class="list-row"><span class="badge solid icon" style="--c: var(--accent-purple)">article</span><div class="main"><b>Source C</b><span>Live updates</span></div><span class="trail icon">open_in_new</span></div>
-            </div>''',
+            "size": 'half', "color": 'purple', "kicker": 'Tap to expand',
+            "title": 'Go deeper in one tap',
+            "text": 'Tap any story for the full article, the original sources, and how they compare.',
+        },
+        {
+            "size": 'two-thirds', "color": 'orange', "kicker": 'Your schedule',
+            "title": 'News when it suits you',
+            "text": "Pick when you'd like your briefing, with your morning coffee or on the way home.",
+            "shots": ['Daily briefing', 'Briefing time'],
+        },
+        {
+            "size": 'third', "color": 'indigo', "kicker": 'No clickbait',
+            "title": 'Plain headlines',
+            "text": 'Headlines that tell you what happened, not what to feel.',
+        },
+        {
+            "size": 'full', "color": 'mint', "kicker": 'Sources first',
+            "title": 'Every story shows its sources',
+            "text": 'See which outlets reported a story and how they compare, then read the originals.',
+            "shots": ['Sources', 'Comparison', 'Full article'],
         },
     ],
     "faq": [

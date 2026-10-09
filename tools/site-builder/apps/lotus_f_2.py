@@ -14,90 +14,48 @@ APP = {
     "status": "Coming to iPhone",
     "h1": "Laptop prices,<br>on your phone",
     "sub": "Lotus F-2 searches flights from a private connection so you aren't quoted more for using a phone. Then it lists every document your trip needs.",
-    "hero": '''        <div class="phone" role="img" aria-label="Lotus F-2 flight results from Denpasar to Singapore with private search on">
-          <div class="phone-screen ui">
-            <div class="screen-header"><h3>Flights</h3><span class="pill" style="--c: var(--accent-green)"><span class="icon">shield</span>Private</span></div>
-            <div class="route" style="padding: 2px 6px 8px">
-              <div><div class="code">DPS</div><div class="city">Denpasar</div></div>
-              <div class="line"><span class="icon">flight</span></div>
-              <div style="text-align: right"><div class="code">SIN</div><div class="city">Singapore</div></div>
-            </div>
-            <div class="list">
-              <div class="fare best"><span class="al" style="--c: var(--accent-blue)">CA</span><div class="times"><b>08:15 – 10:50</b><span>Coral Air · Direct</span></div><div class="price"><s>$214</s>$168</div></div>
-              <div class="fare"><span class="al" style="--c: var(--accent-orange)">SJ</span><div class="times"><b>11:40 – 14:20</b><span>Sunda Jet · Direct</span></div><div class="price"><s>$229</s>$181</div></div>
-              <div class="fare"><span class="al" style="--c: var(--accent-purple)">TA</span><div class="times"><b>17:05 – 21:30</b><span>Tern Airways · 1 stop</span></div><div class="price"><s>$198</s>$157</div></div>
-            </div>
-            <div class="list" style="margin-top: 2px">
-              <div class="check-row"><span class="box icon">check</span><div class="main"><b>Passport valid 6+ months</b></div></div>
-              <div class="check-row"><span class="box todo icon">check</span><div class="main"><b>SG Arrival Card</b><span>Due 3 days before</span></div></div>
-            </div>
-            <div class="tabbar" aria-hidden="true"><span class="on"><span class="icon">flight</span>Flights</span><span><span class="icon">luggage</span>Trips</span><span><span class="icon">description</span>Documents</span><span><span class="icon">settings</span>Settings</span></div>
-          </div>
-        </div>
-        <div class="float-chip chip-streak" aria-hidden="true">
-          <span class="chip-icon icon" style="--c: var(--accent-green)">savings</span>
-          <div><b class="rounded">−$46</b><small>vs. regular search</small></div>
-        </div>
-        <div class="float-chip chip-done" aria-hidden="true">
-          <span class="chip-icon icon" style="--c: var(--accent-blue)">fingerprint</span>
-          <div><b class="rounded">Masked</b><small>Device fingerprint</small></div>
-        </div>''',
+    "hero_shot": 'Flight results',
+    "hero_note": "No spam. Just one email when it's ready.",
+    "chips": [('savings', 'green', 'Fair fares', 'Private search'), ('fingerprint', 'blue', 'Masked', 'Device fingerprint')],
     "features_title": "Book with confidence.<br>Travel without the stress.",
     "features": [
         {
-            "size": "two-thirds", "color": "green", "kicker": "Private search",
-            "title": "The same fare, wherever you search",
-            "text": "Searches go through a private connection that hides your IP address and phone fingerprint, so prices aren't marked up for searching on a phone.",
-            "media": '''            <div class="panel" style="max-width: 420px; gap: 14px">
-              <div class="chart-head" style="align-items: center"><span class="label">Hidden from booking sites</span><span class="pill" style="--c: var(--accent-green)"><span class="icon">shield</span>Private search on</span></div>
-              <div class="masked"><span><span class="icon">public</span>IP address</span><span><span class="icon">smartphone</span>Device model</span><span><span class="icon">location_on</span>Location</span><span><span class="icon">cookie</span>Cookies</span></div>
-              <div class="compare" role="img" aria-label="Illustration: regular phone search $214, Lotus F-2 private search $168" style="max-width: none">
-                <div class="compare-row"><div class="top"><span>Regular phone search</span><b>$214</b></div><div class="bar"><i style="--w: 100%; --c: var(--color-fill-3)"></i></div></div>
-                <div class="compare-row"><div class="top"><span style="color: var(--accent-green)">Lotus F-2 private search</span><b style="color: var(--accent-green)">$168</b></div><div class="bar"><i style="--w: 78%; --c: var(--accent-green)"></i></div></div>
-              </div>
-              <span class="ui-sub">Example prices for illustration</span>
-            </div>''',
+            "size": 'third', "color": 'blue', "kicker": 'Price comparison',
+            "title": 'Every fare in one place',
+            "text": 'Compares prices across airlines and booking sites, side by side.',
         },
         {
-            "size": "third", "color": "blue", "kicker": "Price comparison",
-            "title": "Every fare in one place",
-            "text": "Compares prices across airlines and booking sites, side by side.",
-            "media": '''            <div class="list" style="max-width: 260px">
-              <div class="list-head"><span>DPS → SIN · Fri 14 Nov</span><span>12 sites</span></div>
-              <div class="fare best"><span class="al" style="--c: var(--accent-blue)">CA</span><div class="times"><b>Coral Air</b><span>Direct · 2h 35m</span></div><div class="price">$168</div></div>
-              <div class="fare"><span class="al" style="--c: var(--accent-orange)">SJ</span><div class="times"><b>Sunda Jet</b><span>Direct · 2h 40m</span></div><div class="price">$181</div></div>
-              <div class="fare"><span class="al" style="--c: var(--accent-purple)">TA</span><div class="times"><b>Tern Airways</b><span>1 stop · 4h 25m</span></div><div class="price">$157</div></div>
-            </div>''',
+            "size": 'two-thirds', "color": 'green', "kicker": 'Private search',
+            "title": 'The same fare, wherever you search',
+            "text": "Searches hide your IP address and phone fingerprint, so prices aren't marked up for searching on a phone.",
+            "shots": ['Private search', 'Price comparison'],
         },
         {
-            "size": "half", "color": "orange", "kicker": "Document checklist",
-            "title": "Every document, for your exact route",
+            "size": 'half', "color": 'orange', "kicker": 'Document checklist',
+            "title": 'Every document, for your exact route',
             "text": "Visas, entry cards, health forms and more, tailored to where you're flying from and to.",
-            "media": '''            <div class="list" style="max-width: 340px">
-              <div class="list-head" style="flex-direction: column; align-items: stretch; gap: 6px"><div style="display: flex; justify-content: space-between"><span>Singapore entry</span><span style="color: var(--accent-green)">2 of 4 ready</span></div><div class="meter"><i style="--w: 50%; --c: var(--accent-green)"></i></div></div>
-              <div class="check-row done"><span class="box icon">check</span><div class="main"><b>Passport</b><span>Valid until March 2031</span></div></div>
-              <div class="check-row done"><span class="box icon">check</span><div class="main"><b>Return ticket</b><span>Booked</span></div></div>
-              <div class="check-row"><span class="box todo icon">check</span><div class="main"><b>Arrival card</b><span>Submit online, 3 days before</span></div><span class="pill" style="--c: var(--accent-orange)">To do</span></div>
-              <div class="check-row"><span class="box todo icon">check</span><div class="main"><b>Health declaration</b><span>If required for your route</span></div></div>
-            </div>''',
         },
         {
-            "size": "half", "color": "purple", "kicker": "Step-by-step guidance",
-            "title": "No surprises at the airport",
-            "text": "Simple steps and reminders for check-in, security and immigration, so you're never left guessing.",
-            "media": '''            <div class="vstack" style="gap: 18px; max-width: 340px">
-            <div class="ticket" aria-hidden="true">
-              <div class="ticket-top">
-                <div class="route"><div><div class="code">DPS</div><div class="city">Denpasar</div></div><div class="line"><span class="icon">flight</span></div><div style="text-align: right"><div class="code">SIN</div><div class="city">Singapore</div></div></div>
-              </div>
-              <div class="ticket-bottom"><div><span>Boarding</span><b>07:35</b></div><div><span>Gate</span><b>D4</b></div><div><span>Seat</span><b>14A</b></div></div>
-            </div>
-            <div class="steps">
-              <div class="step done"><span class="n"><span class="icon">check</span></span><div><b>Online check-in</b><span>Opens 48 hours before</span></div></div>
-              <div class="step now"><span class="n">2</span><div><b>Bag drop by 06:15</b><span>Terminal 2 · Counter D</span></div></div>
-              <div class="step"><span class="n">3</span><div><b>Immigration</b><span>Have your arrival card ready</span></div></div>
-            </div>
-            </div>''',
+            "size": 'half', "color": 'purple', "kicker": 'Step-by-step guidance',
+            "title": 'No surprises at the airport',
+            "text": "Simple steps for check-in, security and immigration, so you're never left guessing.",
+        },
+        {
+            "size": 'two-thirds', "color": 'mint', "kicker": 'Travel day',
+            "title": 'Reminders at the right moment',
+            "text": 'Gentle reminders for check-in, bag drop and entry forms, timed to your flight.',
+            "shots": ['Trip timeline', 'Reminder'],
+        },
+        {
+            "size": 'third', "color": 'indigo', "kicker": 'Entry rules',
+            "title": 'From official sources',
+            "text": 'Requirements are based on official entry rules, with links so you can double-check before you fly.',
+        },
+        {
+            "size": 'full', "color": 'pink', "kicker": 'All in one app',
+            "title": 'From search to arrival',
+            "text": 'Find a fair fare, get your documents in order and know what to expect at the airport, all in one place.',
+            "shots": ['Search', 'Checklist', 'Travel day'],
         },
     ],
     "faq": [

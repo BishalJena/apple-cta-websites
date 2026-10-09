@@ -14,89 +14,48 @@ APP = {
     "status": "Coming to iPhone",
     "h1": "Stop wondering.<br>Start knowing.",
     "sub": "Lotus E-2 checks popular dating apps for active public profiles, so you can have the conversation with facts instead of fears.",
-    "hero": '''        <div class="phone" role="img" aria-label="Lotus E-2 report: 7 dating apps checked, 1 possible active profile found">
-          <div class="phone-screen ui">
-            <div class="screen-header"><h3>Report</h3><span>Just now</span></div>
-            <div class="panel" style="background: var(--color-fill-0); box-shadow: 0 0 0 1px var(--color-hairline)">
-              <div class="result-head">
-                <span class="avatar-blur" aria-hidden="true"></span>
-                <div style="flex: 1"><b style="font-size: 15px">Alex, 31</b><div class="ui-sub">Within 10 km of Canggu</div></div>
-                <span class="pill solid" style="--c: var(--accent-orange)">1 match</span>
-              </div>
-            </div>
-            <div class="list">
-              <div class="list-row flag" style="--c: var(--accent-orange)"><span class="badge solid icon" style="--c: var(--accent-orange)">favorite</span><div class="main"><b>Possible profile found</b><span>Active in the last 7 days</span></div><span class="trail icon">chevron_right</span></div>
-              <div class="list-row"><span class="badge icon" style="--c: var(--accent-green)">check</span><div class="main"><b>6 apps clear</b><span>No matching public profile</span></div></div>
-            </div>
-            <div class="panel" style="gap: 8px; background: var(--color-fill-0); box-shadow: 0 0 0 1px var(--color-hairline)">
-              <div class="chart-head" style="align-items: center"><span class="label">Match confidence</span><b class="rounded" style="font-size: 15px">Medium</b></div>
-              <div class="meter"><i style="--w: 58%; --c: var(--accent-orange)"></i></div>
-            </div>
-            <div class="ui-label" style="padding: 4px 4px 0">Next steps</div>
-            <div class="list">
-              <div class="list-row"><span class="badge icon" style="--c: var(--accent-purple)">forum</span><div class="main"><b>Plan the conversation</b><span>Gentle ways to bring it up</span></div><span class="trail icon">chevron_right</span></div>
-            </div>
-            <div class="tabbar" aria-hidden="true"><span><span class="icon">search</span>Search</span><span class="on"><span class="icon">description</span>Reports</span><span><span class="icon">settings</span>Settings</span></div>
-          </div>
-        </div>
-        <div class="float-chip chip-streak" aria-hidden="true">
-          <span class="chip-icon icon" style="--c: var(--accent-purple)">travel_explore</span>
-          <div><b class="rounded">7 apps</b><small>Checked</small></div>
-        </div>
-        <div class="float-chip chip-done" aria-hidden="true">
-          <span class="chip-icon icon" style="--c: var(--accent-green)">lock</span>
-          <div><b class="rounded">Private</b><small>Only you see it</small></div>
-        </div>''',
+    "hero_shot": 'Search report',
+    "hero_note": "No spam. Just one email when it's ready.",
+    "chips": [('travel_explore', 'purple', '7 apps', 'Checked'), ('lock', 'green', 'Private', 'Only you see it')],
     "features_title": "Clarity, without<br>the guesswork.",
     "features": [
         {
-            "size": "two-thirds", "color": "purple", "kicker": "Cross-platform search",
-            "title": "One search, every popular app",
+            "size": 'third', "color": 'blue', "kicker": 'Targeted matching',
+            "title": 'Just the right person',
+            "text": 'Narrow the search by name, age and area to cut out lookalikes.',
+        },
+        {
+            "size": 'two-thirds', "color": 'purple', "kicker": 'Cross-platform search',
+            "title": 'One search, every popular app',
             "text": "Checks public profiles across the most popular dating apps at once, so you don't have to sign up to each one.",
-            "media": '''            <div class="list" style="max-width: 420px">
-              <div class="list-row"><span class="badge icon" style="--c: var(--accent-pink)">favorite</span><div class="main"><b>Dating app 1</b><span>Searched public profiles</span></div><span class="pill" style="--c: var(--accent-green)">Clear</span></div>
-              <div class="list-row flag" style="--c: var(--accent-orange)"><span class="badge solid icon" style="--c: var(--accent-orange)">favorite</span><div class="main"><b>Dating app 2</b><span>Possible match · active this week</span></div><span class="pill solid" style="--c: var(--accent-orange)">Review</span></div>
-              <div class="list-row"><span class="badge icon" style="--c: var(--accent-purple)">favorite</span><div class="main"><b>Dating app 3</b><span>Searched public profiles</span></div><span class="pill" style="--c: var(--accent-green)">Clear</span></div>
-              <div class="list-row"><span class="badge icon" style="--c: var(--accent-blue)">more_horiz</span><div class="main"><b>4 more apps</b><span>All clear</span></div></div>
-            </div>''',
+            "shots": ['Search', 'Results by app'],
         },
         {
-            "size": "third", "color": "blue", "kicker": "Targeted matching",
-            "title": "Just the right person",
-            "text": "Narrow the search by name, age and area to cut out lookalikes.",
-            "media": '''            <div class="list" style="max-width: 260px">
-              <div class="list-row"><span class="badge icon" style="--c: var(--accent-blue)">person</span><div class="main"><span>Name</span><b>Alex</b></div></div>
-              <div class="list-row"><span class="badge icon" style="--c: var(--accent-blue)">cake</span><div class="main"><span>Age</span><b>29 – 33</b></div></div>
-              <div class="list-row"><span class="badge icon" style="--c: var(--accent-blue)">location_on</span><div class="main"><span>Area</span><b>Canggu · 10 km</b></div></div>
-              <div style="padding: 10px 12px 12px"><div class="big-button" style="--c: var(--accent-purple)"><span class="icon">search</span>Search 7 apps</div></div>
-            </div>''',
+            "size": 'half', "color": 'orange', "kicker": 'Clear reports',
+            "title": 'A straight answer',
+            "text": 'A simple summary of any active profiles, how confident the match is, and when it was last active.',
         },
         {
-            "size": "full", "color": "orange", "kicker": "Clear reports",
-            "title": "A straight answer, and what to do next",
-            "text": "Get a simple summary of any active profiles, how confident the match is, and when it was last active, plus guidance for the conversation that follows.",
-            "media": '''            <div class="split" style="max-width: 760px; align-items: stretch">
-              <div class="panel" style="gap: 12px">
-                <div class="result-head">
-                  <span class="avatar-blur" aria-hidden="true"></span>
-                  <div style="flex: 1"><b style="font-size: 15px">Report summary</b><div class="ui-sub">Alex, 31 · Canggu</div></div>
-                  <span class="pill solid" style="--c: var(--accent-orange)">1 match</span>
-                </div>
-                <div class="stat-tiles" style="grid-template-columns: repeat(3, 1fr); max-width: none">
-                  <div class="stat-tile" style="background: var(--color-card)"><div class="num">7</div><div class="lbl">Apps checked</div></div>
-                  <div class="stat-tile" style="background: var(--color-card)"><div class="num" style="color: var(--accent-orange)">1</div><div class="lbl">Possible match</div></div>
-                  <div class="stat-tile" style="background: var(--color-card)"><div class="num">7<small>d</small></div><div class="lbl">Last active</div></div>
-                </div>
-                <div class="chart-head" style="align-items: center"><span class="label">Match confidence</span><b class="rounded" style="font-size: 15px">Medium</b></div>
-                <div class="meter"><i style="--w: 58%; --c: var(--accent-orange)"></i></div>
-              </div>
-              <div class="list">
-                <div class="list-head"><span>Before you talk</span><span class="icon" style="font-size: 16px">favorite</span></div>
-                <div class="list-row"><span class="badge icon" style="--c: var(--accent-purple)">self_improvement</span><div class="main"><b>Take a moment first</b><span>A match isn't proof of anything</span></div></div>
-                <div class="list-row"><span class="badge icon" style="--c: var(--accent-blue)">forum</span><div class="main"><b>Ask, don't accuse</b><span>Open questions keep things calm</span></div></div>
-                <div class="list-row"><span class="badge icon" style="--c: var(--accent-green)">support_agent</span><div class="main"><b>Get support</b><span>People you trust, or a counsellor</span></div></div>
-              </div>
-            </div>''',
+            "size": 'half', "color": 'green', "kicker": 'Private to you',
+            "title": 'Only you see your searches',
+            "text": 'Searches and reports stay private to you, and you can delete them at any time.',
+        },
+        {
+            "size": 'two-thirds', "color": 'pink', "kicker": 'What to do next',
+            "title": 'Help with the hard conversation',
+            "text": 'Gentle guidance for talking it through, because a match is a starting point, not a verdict.',
+            "shots": ['Conversation guide', 'Support'],
+        },
+        {
+            "size": 'third', "color": 'indigo', "kicker": 'Public info only',
+            "title": 'No hacking, ever',
+            "text": 'We only look at what dating apps already show publicly. No logins, no private messages.',
+        },
+        {
+            "size": 'full', "color": 'mint', "kicker": 'Built with care',
+            "title": 'Clarity without the stress',
+            "text": "Calm, clear screens from search to report, designed for a moment that's already hard enough.",
+            "shots": ['Search', 'Report', 'Next steps'],
         },
     ],
     "faq": [

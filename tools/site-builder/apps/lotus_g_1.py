@@ -14,121 +14,48 @@ APP = {
     "status": "Launching first in Bali",
     "h1": "Ease off before<br>the camera",
     "sub": "Lotus G-1 puts the next speed camera on your Dynamic Island and Lock Screen, with a heads-up to slow down long before you reach it.",
-    "hero": '''        <div class="phone" role="img" aria-label="iPhone Lock Screen showing a Lotus G-1 Live Activity: speed camera 850 metres ahead, limit 60 km/h">
-          <div class="phone-screen lock">
-            <div class="island">
-              <span class="la-sign sm">60</span>
-              <div class="la-main"><b style="font-size: 13px">Speed camera</b><span>Jl. Bypass Ngurah Rai</span></div>
-              <div class="la-dist" style="font-size: 20px">850<small>m</small></div>
-            </div>
-            <div class="lock-inner" style="padding-top: 92px">
-              <div class="lock-date">Thursday, October 9</div>
-              <div class="lock-time">9:41</div>
-              <div class="lock-spacer"></div>
-              <div class="live-activity">
-                <div class="la-row">
-                  <span class="la-sign">60</span>
-                  <div class="la-main"><b>Speed camera ahead</b><span>Fixed camera · both directions</span></div>
-                  <div class="la-dist">850<small>m</small></div>
-                </div>
-                <div class="la-bar" style="--p: 68%"><i></i></div>
-                <div class="la-foot"><span>You: 72 km/h</span><span class="warn">Slow down by 12</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="float-chip chip-streak" aria-hidden="true">
-          <span class="chip-icon icon" style="--c: var(--accent-red)">photo_camera</span>
-          <div><b class="rounded">850 m</b><small>Next camera</small></div>
-        </div>
-        <div class="float-chip chip-done" aria-hidden="true">
-          <span class="chip-icon icon" style="--c: var(--accent-green)">verified</span>
-          <div><b class="rounded">No tickets</b><small>This month</small></div>
-        </div>''',
+    "hero_shot": 'Lock Screen with Live Activity',
+    "hero_note": "No spam. Just one email when it's ready.",
+    "chips": [('photo_camera', 'red', '850 m', 'Next camera'), ('verified', 'green', 'Slow down', 'Before the camera')],
     "features_title": "Every camera, called out<br>before you get there.",
     "features": [
         {
-            "size": "two-thirds", "color": "orange", "kicker": "Live Activity",
-            "title": "Always on your Lock Screen",
-            "text": "The next camera, its limit and your distance stay on the Dynamic Island and Lock Screen. No switching apps mid-drive.",
-            "media": '''            <div class="wallpaper bleed">
-              <div class="island compact" style="position: static; transform: none; width: 190px">
-                <span class="la-sign sm">60</span>
-                <span class="rounded" style="font-weight: 700; font-size: 15px">850 m</span>
-              </div>
-              <div class="live-activity">
-                <div class="la-row">
-                  <span class="la-sign">80</span>
-                  <div class="la-main"><b>Average speed zone</b><span>Next 4.2 km</span></div>
-                  <div class="la-dist">1.4<small>km</small></div>
-                </div>
-                <div class="la-bar" style="--p: 35%"><i></i></div>
-                <div class="la-foot"><span>You: 76 km/h</span><span style="color: var(--accent-green)">Within limit</span></div>
-              </div>
-            </div>''',
+            "size": 'third', "color": 'orange', "kicker": 'Live Activity',
+            "title": 'Always on your Lock Screen',
+            "text": 'The next camera, its limit and your distance, right on the Dynamic Island and Lock Screen.',
         },
         {
-            "size": "third", "color": "red", "kicker": "Proximity alerts",
-            "title": "Heard and seen",
-            "text": "A visual and spoken warning as you get close, with the distance and the camera's limit.",
-            "media": '''            <div class="notif-stack">
-              <div class="notif"><img class="n-icon" src="assets/app-icon.svg" alt=""><div class="n-body"><div class="n-head"><b>Lotus G-1</b><time>now</time></div><p>Speed camera in 500 m. Limit 60 km/h.</p></div></div>
-              <div class="notif"><img class="n-icon" src="assets/app-icon.svg" alt=""><div class="n-body"><div class="n-head"><b>Lotus G-1</b><time>2 km</time></div><p>Camera ahead in 2 km.</p></div></div>
-            </div>''',
+            "size": 'two-thirds', "color": 'red', "kicker": 'Proximity alerts',
+            "title": 'Heard and seen',
+            "text": "A visual and spoken warning as you get close, with the distance and the camera's speed limit.",
+            "shots": ['Proximity alert', 'Alert details'],
         },
         {
-            "size": "half", "color": "green", "kicker": "Speed advisory",
+            "size": 'half', "color": 'green', "kicker": 'Speed advisory',
             "title": "Knows when you're too fast",
-            "text": "Your speed is compared with the limit ahead, so you get a nudge to ease off, or a suggestion to take another route.",
-            "media": '''            <div class="gauge" role="img" aria-label="Speed gauge: 72 km/h, limit 60">
-              <svg viewBox="0 0 200 120">
-                <path d="M20 110a80 80 0 0 1 160 0" fill="none" stroke="var(--color-fill-3)" stroke-width="14" stroke-linecap="round"/>
-                <path d="M20 110a80 80 0 0 1 160 0" fill="none" stroke="var(--accent-green)" stroke-width="14" stroke-linecap="round" stroke-dasharray="126 252"/>
-                <path d="M20 110a80 80 0 0 1 160 0" fill="none" stroke="var(--accent-orange)" stroke-width="14" stroke-linecap="round" stroke-dasharray="0 126 26 252"/>
-                <circle cx="100" cy="30" r="0" />
-              </svg>
-              <div class="gauge-read"><b>72</b><span>km/h · limit 60</span></div>
-            </div>''',
+            "text": 'Your speed is compared with the limit ahead, with a nudge to ease off or a suggestion to change route.',
         },
         {
-            "size": "half", "color": "blue", "kicker": "Community reports",
-            "title": "Drivers looking out for drivers",
-            "text": "Report a police check or a new camera in one tap, and help everyone on the road stay informed.",
-            "media": '''            <div class="list" style="max-width: 320px">
-              <div class="list-row"><span class="badge solid icon" style="--c: var(--accent-blue)">local_police</span><div class="main"><b>Police check</b><span>Reported 4 min ago · 1.2 km</span></div><span class="pill" style="--c: var(--accent-blue)">+12</span></div>
-              <div class="list-row"><span class="badge solid icon" style="--c: var(--accent-red)">photo_camera</span><div class="main"><b>New fixed camera</b><span>Confirmed by 8 drivers</span></div><span class="pill" style="--c: var(--accent-green)"><span class="icon">check</span>Verified</span></div>
-              <div class="list-row"><span class="badge solid icon" style="--c: var(--accent-orange)">add</span><div class="main"><b>Report something</b><span>Takes one tap</span></div></div>
-            </div>''',
+            "size": 'half', "color": 'blue', "kicker": 'Community reports',
+            "title": 'Drivers looking out for drivers',
+            "text": 'Report a police check or a new camera in one tap and help everyone on the road stay informed.',
         },
         {
-            "size": "third", "color": "purple", "kicker": "Your distance",
-            "title": "Warnings when you want them",
-            "text": "Choose how early you hear about a camera, and how you're told.",
-            "media": '''            <div class="settings">
-              <span class="ui-label">Warn me at</span>
-              <div class="segmented"><span>500 m</span><span>1 km</span><span class="on">2 km</span></div>
-              <div class="list">
-                <div class="set-row"><span class="badge icon" style="--c: var(--accent-purple)">record_voice_over</span><span class="lbl">Spoken warnings</span><span class="toggle on"></span></div>
-                <div class="set-row"><span class="badge icon" style="--c: var(--accent-blue)">local_police</span><span class="lbl">Police reports</span><span class="toggle on"></span></div>
-                <div class="set-row"><span class="badge icon" style="--c: var(--accent-orange)">speed</span><span class="lbl">Mobile cameras</span><span class="toggle"></span></div>
-              </div>
-            </div>''',
-        },
-        {
-            "size": "two-thirds", "color": "red", "kicker": "Starting in Bali",
-            "title": "Built on a verified camera map",
+            "size": 'two-thirds', "color": 'pink', "kicker": 'Starting in Bali',
+            "title": 'Built on a verified camera map',
             "text": "We're launching with a speed camera database for Bali, Indonesia, then expanding region by region.",
-            "media_class": "",
-            "media": '''            <div class="map" role="img" aria-label="Map with speed cameras along a route">
-              <svg viewBox="0 0 400 225" preserveAspectRatio="none" aria-hidden="true">
-                <path d="M-10 190 C 80 170, 110 120, 170 118 S 270 70, 410 40" fill="none" stroke="var(--brand)" stroke-width="7" stroke-linecap="round" opacity=".85"/>
-                <path d="M60 -10 C 90 80, 150 140, 140 240" fill="none" stroke="var(--color-fill-3)" stroke-width="5"/>
-              </svg>
-              <span class="pin me" style="left: 12%; top: 80%"></span>
-              <span class="pin icon" style="left: 42%; top: 52%">photo_camera</span>
-              <span class="label" style="left: 42%; top: 62%">60 km/h</span>
-              <span class="pin icon" style="left: 74%; top: 30%; --c: var(--accent-blue)">local_police</span>
-            </div>''',
+            "shots": ['Camera map', 'Camera details'],
+        },
+        {
+            "size": 'third', "color": 'purple', "kicker": 'Your distance',
+            "title": 'Warnings when you want them',
+            "text": "Choose how early you hear about a camera, and how you're told.",
+        },
+        {
+            "size": 'full', "color": 'indigo', "kicker": 'Made for the drive',
+            "title": 'Glanceable and hands-free',
+            "text": 'Big, simple alerts you can take in at a glance, with spoken warnings so your eyes stay on the road.',
+            "shots": ['Driving view', 'Spoken alerts', 'Trip summary'],
         },
     ],
     "faq": [

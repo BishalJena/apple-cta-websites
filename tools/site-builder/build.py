@@ -148,25 +148,62 @@ def page(app, filename, title, description, body, current=None, on_home=False):
 
 
 # Pages -----------------------------------------------------------------------
-def card(f):
-    style = f' style="--k: var(--accent-{f["color"]})"'
-    media_cls = f' {f["media_class"]}' if f.get("media_class") else ""
-    extra = f' {f["class"]}' if f.get("class") else ""
-    return f'''        <figure class="card {f["size"]}{extra}"{style}>
+# The Dayline bento layout every home page follows.
+LAYOUT = ["third", "two-thirds", "half", "half", "two-thirds", "third", "full"]
+
+SCREENS_DIR = os.path.join(HERE, "screens")
+SHOT_EXTS = (".png", ".jpg", ".jpeg", ".webp")
+# How many phone screenshots each card size shows.
+SHOTS_PER_SIZE = {"third": 1, "half": 1, "two-thirds": 2, "full": 3}
+
+
+def shot(app, key, label):
+    """A phone screenshot slot. Uses screens/<slug>/<key>.<ext> if it exists,
+    otherwise a placeholder that names the file to add."""
+    for ext in SHOT_EXTS:
+        src = os.path.join(SCREENS_DIR, app["slug"], key + ext)
+        if os.path.exists(src):
+            dest = os.path.join(ROOT, app["slug"], "assets", "screens")
+            os.makedirs(dest, exist_ok=True)
+            shutil.copyfile(src, os.path.join(dest, key + ext))
+            return f'<div class="shot"><img src="assets/screens/{key}{ext}" alt="{esc(app["name"])}: {esc(label)}" loading="lazy"></div>'
+    return f'''<div class="shot" role="img" aria-label="{esc(app["name"])} screenshot placeholder: {esc(label)}">
+              <div class="shot-ph"><img class="app-icon" src="assets/app-icon.svg" alt=""><b>{esc(label)}</b><code>screens/{app["slug"]}/{key}.png</code></div>
+            </div>'''
+
+
+def card(app, i, f):
+    n = SHOTS_PER_SIZE[f["size"]]
+    keys = [f"card-{i}"] if n == 1 else [f"card-{i}-{j}" for j in range(1, n + 1)]
+    labels = f.get("shots") or [f["title"]] * n
+    phones = "\n".join(
+        f'''            <div class="mini-phone">
+            {shot(app, k, lbl)}
+            </div>''' for k, lbl in zip(keys, labels))
+    return f'''        <figure class="card {f["size"]}" style="--k: var(--accent-{f["color"]})">
           <figcaption class="card-text">
             <span class="kicker">{esc(f["kicker"])}</span>
             <h2>{esc(f["title"])}</h2>
             <p>{esc(f["text"])}</p>
           </figcaption>
-          <div class="card-media{media_cls}">
-{f["media"]}
+          <div class="card-media peek peek-{n}">
+{phones}
           </div>
         </figure>
 '''
 
 
+def chip(cls, icon, color, title, sub):
+    return f'''        <div class="float-chip {cls}" aria-hidden="true">
+          <span class="chip-icon icon" style="--c: var(--accent-{color})">{icon}</span>
+          <div><b class="rounded">{esc(title)}</b><small>{esc(sub)}</small></div>
+        </div>'''
+
+
 def build_index(app):
-    features = "".join(card(f) for f in app["features"])
+    assert [f["size"] for f in app["features"]] == LAYOUT, f'{app["slug"]}: features must follow {LAYOUT}'
+    features = "".join(card(app, i, f) for i, f in enumerate(app["features"], 1))
+    chips = "\n".join(chip(cls, *ch) for cls, ch in zip(("chip-streak", "chip-done"), app["chips"]))
     faq = "\n".join(f'''        <div class="faq-item">
           <h3>{esc(q)}</h3>
           <p>{esc(a)}</p>
@@ -176,17 +213,23 @@ def build_index(app):
           <div><h3>{esc(t)}</h3><p>{esc(d)}</p></div>
         </figure>''' for icon, color, t, d in app["values"])
     body = f'''    <!-- ===================== Hero ===================== -->
-    <section class="hero{(' ' + app["hero_class"]) if app.get("hero_class") else ""}" id="waitlist">
+    <section class="hero" id="waitlist">
       <div class="hero-content">
         <span class="status-pill"><span class="dot"></span>{esc(app["status"])}</span>
         <h1>{app["h1"]}</h1>
         <p>{esc(app["sub"])}</p>
         {waitlist_form(app, "hero")}
+        <span class="hero-note">{esc(app["hero_note"])}</span>
       </div>
 
       <div class="hero-media">
         <div class="hero-glow" aria-hidden="true"></div>
-{app["hero"]}
+        <div class="phone">
+          <div class="phone-screen has-shot">
+            {shot(app, "hero", app["hero_shot"])}
+          </div>
+        </div>
+{chips}
       </div>
     </section>
 
@@ -412,6 +455,7 @@ def build(slug):
     app = load_app(slug)
     out = os.path.join(ROOT, slug)
     os.makedirs(os.path.join(out, "assets"), exist_ok=True)
+    shutil.rmtree(os.path.join(out, "assets", "screens"), ignore_errors=True)
     for name in ("styles.css", "site.js"):
         shutil.copyfile(os.path.join(ASSETS_DIR, name), os.path.join(out, "assets", name))
     with open(os.path.join(out, "assets", "app-icon.svg"), "w") as f:

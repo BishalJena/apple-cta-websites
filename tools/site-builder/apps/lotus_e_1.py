@@ -14,97 +14,48 @@ APP = {
     "status": "Coming to iPhone",
     "h1": "Share the photo.<br>Not the details.",
     "sub": "Photos carry hidden data like where you were, when, and on what device. Lotus E-1 removes it before you post.",
-    "hero": '''        <div class="phone" role="img" aria-label="Lotus E-1 showing a photo with its location, date and camera details removed">
-          <div class="phone-screen ui">
-            <div class="screen-header"><h3>Photo</h3><span class="pill" style="--c: var(--accent-green)"><span class="icon">check</span>Ready</span></div>
-            <div class="photo sunset"><span class="tag-chip"><span class="icon">location_off</span>Location removed</span></div>
-            <div class="list">
-              <div class="meta-row removed"><span class="icon">location_on</span><span class="k">Location</span><span class="v">-8.6705, 115.2126</span></div>
-              <div class="meta-row removed"><span class="icon">schedule</span><span class="k">Date and time</span><span class="v">Oct 4, 18:42</span></div>
-              <div class="meta-row removed"><span class="icon">photo_camera</span><span class="k">Device</span><span class="v">iPhone · 24 mm</span></div>
-              <div class="meta-row removed"><span class="icon">tag</span><span class="k">Hidden IDs</span><span class="v">3 fields</span></div>
-            </div>
-            <div class="big-button" style="--c: var(--brand); color: #04312c"><span class="icon">ios_share</span>Share clean copy</div>
-            <div class="tabbar" aria-hidden="true"><span class="on"><span class="icon">auto_fix_high</span>Clean</span><span><span class="icon">photo_library</span>Library</span><span><span class="icon">settings</span>Settings</span></div>
-          </div>
-        </div>
-        <div class="float-chip chip-streak" aria-hidden="true">
-          <span class="chip-icon icon" style="--c: var(--accent-red)">location_off</span>
-          <div><b class="rounded">GPS gone</b><small>Before you post</small></div>
-        </div>
-        <div class="float-chip chip-done" aria-hidden="true">
-          <span class="chip-icon icon" style="--c: var(--accent-green)">verified_user</span>
-          <div><b class="rounded">23 fields</b><small>Removed</small></div>
-        </div>''',
+    "hero_shot": 'Clean photo',
+    "hero_note": "No spam. Just one email when it's ready.",
+    "chips": [('location_off', 'red', 'GPS gone', 'Before you post'), ('verified_user', 'green', '23 fields', 'Removed')],
     "features_title": "Post freely.<br>Keep the details to yourself.",
     "features": [
         {
-            "size": "two-thirds", "color": "mint", "kicker": "Metadata stripping",
+            "size": 'third', "color": 'blue', "kicker": 'Photos and videos',
+            "title": 'Works on video too',
+            "text": 'Clean a single photo, a whole album, or a long video in one go.',
+        },
+        {
+            "size": 'two-thirds', "color": 'mint', "kicker": 'Metadata stripping',
             "title": "Removes what you can't see",
-            "text": "GPS location, timestamps, camera model, lens and software details are wiped from photos and videos, leaving just the picture.",
-            "media": '''            <div class="hstack" style="align-items: stretch; gap: 14px; width: 100%; max-width: 520px">
-              <div class="list" style="flex: 1; min-width: 200px">
-                <div class="meta-row"><span class="ui-label" style="flex: 1">Before</span></div>
-                <div class="meta-row"><span class="icon">location_on</span><span class="k">GPS</span><span class="v">-8.67, 115.21</span></div>
-                <div class="meta-row"><span class="icon">schedule</span><span class="k">Taken</span><span class="v">Oct 4, 18:42</span></div>
-                <div class="meta-row"><span class="icon">photo_camera</span><span class="k">Camera</span><span class="v">iPhone</span></div>
-                <div class="meta-row"><span class="icon">memory</span><span class="k">Software</span><span class="v">iOS 27.1</span></div>
-              </div>
-              <div class="list" style="flex: 1; min-width: 200px">
-                <div class="meta-row"><span class="ui-label" style="flex: 1; color: var(--accent-green)">After</span></div>
-                <div class="meta-row"><span class="icon">location_on</span><span class="k">GPS</span><span class="done icon">check_circle</span></div>
-                <div class="meta-row"><span class="icon">schedule</span><span class="k">Taken</span><span class="done icon">check_circle</span></div>
-                <div class="meta-row"><span class="icon">photo_camera</span><span class="k">Camera</span><span class="done icon">check_circle</span></div>
-                <div class="meta-row"><span class="icon">memory</span><span class="k">Software</span><span class="done icon">check_circle</span></div>
-              </div>
-            </div>''',
+            "text": 'GPS location, timestamps, camera model and software details are wiped, leaving just the picture.',
+            "shots": ['Before', 'After'],
         },
         {
-            "size": "third", "color": "blue", "kicker": "Photos and videos",
-            "title": "Works on video too",
-            "text": "Clean a single photo, a whole album, or a long video in one go.",
-            "media": '''            <div class="vstack" style="max-width: 250px">
-              <div class="thumbs" aria-hidden="true">
-                <div class="photo sunset"><span class="ok icon">check</span></div>
-                <div class="photo p2"><span class="ok icon">check</span></div>
-                <div class="photo"><span class="play icon">play_arrow</span><span class="dur">0:42</span><span class="ok icon">check</span></div>
-                <div class="photo p3"><span class="ok icon">check</span></div>
-                <div class="photo p4"><span class="play icon">play_arrow</span><span class="dur">1:15</span><span class="ok icon">check</span></div>
-                <div class="photo sunset"><span class="ok icon">check</span></div>
-              </div>
-              <span class="pill" style="--c: var(--accent-green)"><span class="icon">check_circle</span>48 photos · 2 videos cleaned</span>
-            </div>''',
+            "size": 'half', "color": 'purple', "kicker": 'Share sheet',
+            "title": 'Clean as you share',
+            "text": 'Pick Lotus E-1 from the share sheet and a clean copy goes straight to your favourite app.',
         },
         {
-            "size": "half", "color": "purple", "kicker": "Share sheet",
-            "title": "Clean as you share",
-            "text": "Pick Lotus E-1 from the share sheet and a clean copy goes straight to your favourite app. Your original stays untouched.",
-            "media": '''            <div class="panel" style="max-width: 340px; gap: 12px">
-              <div class="result-head"><div class="photo sunset" style="width: 52px; aspect-ratio: 1; border-radius: 10px; flex: none"></div><div style="flex: 1"><b style="font-size: 14px">1 photo selected</b><div class="ui-sub">Original stays in your library</div></div></div>
-              <div class="hstack" style="justify-content: space-between; flex-wrap: nowrap">
-                <span class="eco-tile icon" style="--c: var(--accent-mint); width: 52px; height: 52px; font-size: 26px; border-radius: 14px">auto_fix_high</span>
-                <span class="eco-tile icon" style="--c: var(--accent-green); width: 52px; height: 52px; font-size: 26px; border-radius: 14px">chat</span>
-                <span class="eco-tile icon" style="--c: var(--accent-blue); width: 52px; height: 52px; font-size: 26px; border-radius: 14px">mail</span>
-                <span class="eco-tile icon" style="--c: var(--accent-orange); width: 52px; height: 52px; font-size: 26px; border-radius: 14px">photo_library</span>
-              </div>
-              <div class="hstack ui-sub" style="justify-content: space-between; flex-wrap: nowrap"><span>Lotus E-1</span><span>Messages</span><span>Mail</span><span>Photos</span></div>
-            </div>''',
+            "size": 'half', "color": 'green', "kicker": 'On-device',
+            "title": 'Your photos never leave your iPhone',
+            "text": 'Everything happens on your device. No uploads, no account, no cloud processing.',
         },
         {
-            "size": "half", "color": "green", "kicker": "On-device",
-            "title": "Your photos never leave your iPhone",
-            "text": "Everything happens on your device. No uploads, no account, no cloud processing.",
-            "media": '''            <div class="vstack" style="gap: 18px">
-              <div class="no-upload" aria-hidden="true">
-                <span class="tile icon" style="--c: var(--accent-mint)">smartphone</span>
-                <span class="link"><span class="icon">close</span></span>
-                <span class="tile off icon">cloud_off</span>
-              </div>
-              <div class="stat-tiles" style="max-width: 300px">
-                <div class="stat-tile"><div class="num">0<small>bytes</small></div><div class="lbl">Uploaded</div></div>
-                <div class="stat-tile"><div class="num">0</div><div class="lbl">Accounts needed</div></div>
-              </div>
-            </div>''',
+            "size": 'two-thirds', "color": 'orange', "kicker": "See what's hidden",
+            "title": "Know exactly what you're sharing",
+            "text": 'Inspect every hidden field in a photo before you post, from location to device details.',
+            "shots": ['Hidden details', 'Location preview'],
+        },
+        {
+            "size": 'third', "color": 'pink', "kicker": 'Batch cleaning',
+            "title": 'A whole album at once',
+            "text": 'Select dozens of photos and clean them in seconds.',
+        },
+        {
+            "size": 'full', "color": 'indigo', "kicker": 'Simple by design',
+            "title": 'Pick, clean, post',
+            "text": 'A few taps from your library to a clean copy, ready for any app.',
+            "shots": ['Pick', 'Clean', 'Post'],
         },
     ],
     "faq": [

@@ -55,6 +55,21 @@ python3 tools/site-builder/build.py lotus-g-1    # build one
 WAITLIST_ENDPOINT=https://<worker-url>/api/join python3 tools/site-builder/build.py
 ```
 
+### Adding app screenshots
+
+Every home page follows the same layout as the Dayline reference site: a hero phone plus a 7-card feature grid with phones peeking up from each card. Until real screenshots exist, each phone shows a placeholder naming the file it expects.
+
+Drop portrait iPhone screenshots (1179×2556 works well) into `tools/site-builder/screens/<app-folder>/` and rebuild:
+
+| File | Where it appears |
+| --- | --- |
+| `hero.png` | Hero phone |
+| `card-1.png`, `card-3.png`, `card-4.png`, `card-6.png` | Single-phone cards |
+| `card-2-1.png`, `card-2-2.png`, `card-5-1.png`, `card-5-2.png` | Two-phone cards |
+| `card-7-1.png` … `card-7-3.png` | Full-width card |
+
+`.jpg` and `.webp` work too. Missing files simply keep their placeholder.
+
 Each `lotus-*/` folder is self-contained static HTML (pages: home, release notes, contact, privacy, terms, follow updates) and can be deployed on its own. Without `WAITLIST_ENDPOINT`, the forms show "The waitlist isn't connected yet".
 
 ## Waitlist API setup
