@@ -1,4 +1,7 @@
-// Lotus waitlist: one Cloudflare Pages Function for every app on bishal.app.
+// Lotus waitlists: one Cloudflare Worker on the route bishal.app/lotus-*.
+//
+// Static pages in public/<app>/ are served as Worker assets before this code
+// runs; only requests that match no file (the API) reach fetch() below.
 //
 // POST /<app>/api/join   { email, source?, page?, referrer? }   (JSON or form-encoded)
 //   201 { ok: true }                 new sign-up
@@ -11,6 +14,7 @@
 // contacts (one row per email) + waitlist_signups (one row per email per app).
 // Form posts (no JavaScript) redirect back with ?joined=1.
 
+const JOIN_PATH = /^\/([a-z0-9-]+)\/api\/join\/?$/;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
 
@@ -41,7 +45,16 @@ async function readBody(request) {
   return { data: Object.fromEntries(form), isForm: true };
 }
 
-export async function onRequestPost({ request, env, params }) {
+export default {
+  async fetch(request, env) {
+    const match = new URL(request.url).pathname.match(JOIN_PATH);
+    if (!match) return new Response("Not found", { status: 404 });
+    if (request.method !== "POST") return json({ error: "Method not allowed" }, 405);
+    return join(request, env, match[1]);
+  },
+};
+
+async function join(request, env, slug) {
   let data, isForm;
   try {
     ({ data, isForm } = await readBody(request));
@@ -60,7 +73,7 @@ export async function onRequestPost({ request, env, params }) {
 
   const app = await env.DB
     .prepare("SELECT id FROM apps WHERE slug = ? AND is_active = 1")
-    .bind(String(params.app))
+    .bind(slug)
     .first();
   if (!app) return json({ error: "This waitlist isn't open right now." }, 404);
 

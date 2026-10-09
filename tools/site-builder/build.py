@@ -3,10 +3,9 @@
 
 Each app's content lives in tools/site-builder/apps/<slug>.py. This script
 renders every app into its own folder under public/ (public/lotus-g-1/, ...),
-copying the shared CSS/JS into each one, plus a small index at public/index.html.
-public/ is served by one Cloudflare Pages project at https://bishal.app, so each
-app lives at bishal.app/<slug>/ and posts sign-ups to bishal.app/<slug>/api/join
-(functions/[app]/api/join.js at the repo root).
+copying the shared CSS/JS into each one. public/ is served by the
+lotus-waitlists Worker on the route bishal.app/lotus-*, so each app lives at
+bishal.app/<slug>/ and posts sign-ups to bishal.app/<slug>/api/join (src/index.js).
 
 Usage:
     python3 tools/site-builder/build.py                     # build all apps
@@ -31,7 +30,6 @@ PUBLIC_DIR = os.path.join(ROOT, "public")
 ORDER = ["lotus-g-1", "lotus-c-1", "lotus-f-1", "lotus-f-2", "lotus-e-1", "lotus-e-2", "lotus-e-3"]
 OWNER = "Joel Vargas"
 LAST_UPDATED = "October 9, 2026"
-SITE_URL = "https://bishal.app"
 # Relative, so each app's forms post to bishal.app/<slug>/api/join.
 WAITLIST_ENDPOINT = "api/join"
 
@@ -445,47 +443,6 @@ def public_dir(slug):
     return os.path.join(PUBLIC_DIR, slug)
 
 
-def build_root_index(apps):
-    """bishal.app/ — a plain list of the apps, linking to each waitlist site."""
-    items = "\n".join(
-        f'''      <li><a href="{a["slug"]}/"><b>{esc(a["name"])}</b><span>{esc(a["title"])}</span></a></li>'''
-        for a in apps
-    )
-    with open(os.path.join(PUBLIC_DIR, "index.html"), "w") as f:
-        f.write(f'''<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Upcoming apps</title>
-  <meta name="description" content="Apps in the works. Join a waitlist to hear when each one launches.">
-  <link rel="canonical" href="{SITE_URL}/">
-  <style>
-    :root {{ color-scheme: light dark; --fg: #111; --muted: #666; --bg: #fff; --line: #e5e5e5; }}
-    @media (prefers-color-scheme: dark) {{ :root {{ --fg: #f2f2f2; --muted: #9a9a9a; --bg: #0b0b0b; --line: #262626; }} }}
-    body {{ margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Inter", system-ui, sans-serif; }}
-    main {{ max-width: 640px; margin: 0 auto; padding: 64px 20px; }}
-    h1 {{ font-size: 28px; margin: 0 0 4px; letter-spacing: -0.02em; }}
-    p {{ color: var(--muted); margin: 0 0 32px; }}
-    ul {{ list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }}
-    a {{ display: flex; flex-direction: column; padding: 16px 0; border-bottom: 1px solid var(--line); color: inherit; text-decoration: none; }}
-    a:hover b {{ text-decoration: underline; }}
-    a span {{ color: var(--muted); font-size: 15px; }}
-  </style>
-</head>
-<body>
-  <main>
-    <h1>Upcoming apps</h1>
-    <p>Apps in the works. Join a waitlist to hear when each one launches.</p>
-    <ul>
-{items}
-    </ul>
-  </main>
-</body>
-</html>
-''')
-
-
 def load_app(slug):
     path = os.path.join(APPS_DIR, slug.replace("-", "_") + ".py")
     spec = importlib.util.spec_from_file_location(slug, path)
@@ -521,5 +478,4 @@ if __name__ == "__main__":
         if slug not in ORDER:
             sys.exit(f"unknown app: {slug} (expected one of {', '.join(ORDER)})")
         build(slug)
-    build_root_index([load_app(slug) for slug in ORDER])
-    print("built public/index.html")
+
