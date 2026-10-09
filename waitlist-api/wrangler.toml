@@ -1,0 +1,14 @@
+name = "lotus-waitlist"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "lotus-waitlist"
+# Fill in after `npx wrangler d1 create lotus-waitlist`
+database_id = "REPLACE_WITH_DATABASE_ID"
+
+[vars]
+# Comma-separated list of site origins allowed to call the API,
+# e.g. "https://lotus-g1.app,https://lotus-c1.app". Use "*" while testing.
+ALLOWED_ORIGINS = "*"
