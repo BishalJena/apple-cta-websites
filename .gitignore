@@ -1,4 +1,33 @@
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Node / Wrangler
 node_modules/
 .wrangler/
+.dev.vars*
+*.log
+
+# Secrets — never commit these (public repo)
+.env
+.env.*
+*.pem
+*.key
+
+# Python
 __pycache__/
+*.pyc
+
+# Local data exports (waitlist emails are personal data)
+*.csv
+*.sqlite
+*.sqlite3
+*.db
+exports/

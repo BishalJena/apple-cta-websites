@@ -4,12 +4,16 @@
 Each app's content lives in tools/site-builder/apps/<slug>.py. This script
 renders every app into its own self-contained folder at the repo root
 (lotus-g-1/, lotus-c-1/, ...), copying the shared CSS/JS into each one so
-every folder can be deployed on its own.
+every folder can be deployed on its own as a Cloudflare Pages project:
+
+    lotus-g-1/
+    ├── wrangler.toml       # Pages config: D1 binding + APP_SLUG
+    ├── functions/api/      # POST /api/join → D1 (from functions/)
+    └── public/             # the static site
 
 Usage:
     python3 tools/site-builder/build.py                     # build all apps
     python3 tools/site-builder/build.py lotus-g-1           # build one app
-    WAITLIST_ENDPOINT=https://waitlist.example.com/api/join python3 tools/site-builder/build.py
 
 Only the Python standard library is used.
 """
@@ -24,14 +28,18 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 APPS_DIR = os.path.join(HERE, "apps")
 ASSETS_DIR = os.path.join(HERE, "assets")
+FUNCTIONS_DIR = os.path.join(HERE, "functions")
 
 # Shared settings -------------------------------------------------------------
 ORDER = ["lotus-g-1", "lotus-c-1", "lotus-f-1", "lotus-f-2", "lotus-e-1", "lotus-e-2", "lotus-e-3"]
 OWNER = "Joel Vargas"
 LAST_UPDATED = "October 9, 2026"
-# Where the "Join the waitlist" forms POST to (see waitlist-api/). Empty means
-# the forms show a friendly "not connected yet" message instead of submitting.
-WAITLIST_ENDPOINT = os.environ.get("WAITLIST_ENDPOINT", "").strip()
+# Every site's forms POST to its own Pages Function, which writes to this D1
+# database. D1 ids aren't credentials: access still needs a Cloudflare token.
+WAITLIST_ENDPOINT = "/api/join"
+D1_DATABASE_NAME = "waitlist-db"
+D1_DATABASE_ID = "43f0edef-9a7f-4a86-aab6-f8cd3f2df13b"
+COMPATIBILITY_DATE = "2026-09-01"
 
 FONTS = (
     '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
@@ -73,7 +81,6 @@ def head(app, title, description):
   <meta property="og:title" content="{esc(title)}">
   <meta property="og:description" content="{esc(description)}">
   <meta property="og:type" content="website">
-  <meta name="waitlist-endpoint" content="{esc(WAITLIST_ENDPOINT)}">
   <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/app-icon.svg">
 {FONTS}  <link rel="stylesheet" href="assets/styles.css">
@@ -127,10 +134,9 @@ def footer(app):
 
 
 def waitlist_form(app, source, label="Join the waitlist", center=False):
-    action = esc(WAITLIST_ENDPOINT or "#")
+    action = esc(WAITLIST_ENDPOINT)
     return f'''<div class="waitlist-wrap{' center' if center else ''}">
-          <form class="waitlist" action="{action}" method="post" data-waitlist data-app="{app["slug"]}" data-source="{source}">
-            <input type="hidden" name="app" value="{app["slug"]}">
+          <form class="waitlist" action="{action}" method="post" data-waitlist data-source="{source}">
             <input type="hidden" name="source" value="{source}">
             <label class="hp" aria-hidden="true">Company<input name="company" tabindex="-1" autocomplete="off"></label>
             <input class="input" type="email" name="email" placeholder="you@example.com" autocomplete="email" aria-label="Email address" required>
@@ -143,7 +149,7 @@ def waitlist_form(app, source, label="Join the waitlist", center=False):
 def page(app, filename, title, description, body, current=None, on_home=False):
     out = head(app, title, description) + "<body>\n" + nav(app, current, on_home) + \
         "\n  <main>\n" + body + "\n  </main>\n\n" + footer(app)
-    with open(os.path.join(ROOT, app["slug"], filename), "w") as f:
+    with open(os.path.join(public_dir(app["slug"]), filename), "w") as f:
         f.write(out)
 
 
@@ -163,7 +169,7 @@ def shot(app, key, label):
     for ext in SHOT_EXTS:
         src = os.path.join(SCREENS_DIR, app["slug"], key + ext)
         if os.path.exists(src):
-            dest = os.path.join(ROOT, app["slug"], "assets", "screens")
+            dest = os.path.join(public_dir(app["slug"]), "assets", "screens")
             os.makedirs(dest, exist_ok=True)
             shutil.copyfile(src, os.path.join(dest, key + ext))
             return f'<div class="shot"><img src="assets/screens/{key}{ext}" alt="{esc(app["name"])}: {esc(label)}" loading="lazy"></div>'
@@ -370,7 +376,7 @@ def sections_html(sections):
 def build_privacy(app):
     email = app["contact_email"]
     waitlist = [
-        ("This website and the waitlist", f'''        <p>When you join the waitlist, we store your email address, which app you signed up for, and the time you signed up. We use it only to tell you about {esc(app["name"])}'s launch and major updates. We don't sell or share it, and every email includes a way to unsubscribe.</p>
+        ("This website and the waitlist", f'''        <p>When you join the waitlist, we store your email address, which app you signed up for, and the time you signed up. We also store your approximate location (country, region, city and time zone, estimated from your IP address by Cloudflare; we don't store the IP address itself) and how you found this site (the page you signed up on, the site that linked you here, and any campaign tags in the link). We use this only to tell you about {esc(app["name"])}'s launch and major updates, and to understand where interest in it comes from. We don't sell or share it, and every email includes a way to unsubscribe.</p>
         <p>Waitlist sign-ups are stored with our hosting provider, Cloudflare. To remove your email from the waitlist, contact us at <a href="mailto:{email}">{email}</a>.</p>
         <p>This site doesn't use advertising or tracking cookies.</p>'''),
     ]
@@ -441,6 +447,32 @@ def build_updates(app):
 
 
 # Driver ----------------------------------------------------------------------
+def public_dir(slug):
+    return os.path.join(ROOT, slug, "public")
+
+
+def write_pages_config(slug):
+    """wrangler.toml + the /api/join Pages Function for one site."""
+    site = os.path.join(ROOT, slug)
+    shutil.rmtree(os.path.join(site, "functions"), ignore_errors=True)
+    shutil.copytree(FUNCTIONS_DIR, os.path.join(site, "functions"))
+    with open(os.path.join(site, "wrangler.toml"), "w") as f:
+        f.write(f'''# Generated by tools/site-builder/build.py. Don't edit by hand.
+name = "{slug}"
+pages_build_output_dir = "./public"
+compatibility_date = "{COMPATIBILITY_DATE}"
+
+[vars]
+# Which row in the apps table this site's sign-ups belong to.
+APP_SLUG = "{slug}"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "{D1_DATABASE_NAME}"
+database_id = "{D1_DATABASE_ID}"
+''')
+
+
 def load_app(slug):
     path = os.path.join(APPS_DIR, slug.replace("-", "_") + ".py")
     spec = importlib.util.spec_from_file_location(slug, path)
@@ -453,7 +485,7 @@ def load_app(slug):
 
 def build(slug):
     app = load_app(slug)
-    out = os.path.join(ROOT, slug)
+    out = public_dir(slug)
     os.makedirs(os.path.join(out, "assets"), exist_ok=True)
     shutil.rmtree(os.path.join(out, "assets", "screens"), ignore_errors=True)
     for name in ("styles.css", "site.js"):
@@ -466,6 +498,7 @@ def build(slug):
     build_privacy(app)
     build_terms(app)
     build_updates(app)
+    write_pages_config(slug)
     print(f"built {slug}/")
 
 

@@ -16,13 +16,13 @@ All seven sites live in this repo, one folder per app. Each folder is deployed a
 apple-cta-websites/
 ├── README.md
 ├── APPS.md       # Details for each app
-├── lotus-g-1/    # Lotus G-1
-├── lotus-c-1/    # Lotus C-1
-├── lotus-f-1/    # Lotus F-1
-├── lotus-f-2/    # Lotus F-2
-├── lotus-e-1/    # Lotus E-1
-├── lotus-e-2/    # Lotus E-2
-└── lotus-e-3/    # Lotus E-3
+├── lotus-g-1/    # Lotus G-1 → https://lotus-g-1.pages.dev
+├── lotus-c-1/    # Lotus C-1 → https://lotus-c-1.pages.dev
+├── lotus-f-1/    # Lotus F-1 → https://lotus-f-1.pages.dev
+├── lotus-f-2/    # Lotus F-2 → https://lotus-f-2.pages.dev
+├── lotus-e-1/    # Lotus E-1 → https://lotus-e-1.pages.dev
+├── lotus-e-2/    # Lotus E-2 → https://lotus-e-2.pages.dev
+└── lotus-e-3/    # Lotus E-3 → https://lotus-e-3.pages.dev
 ```
 
 See [APPS.md](APPS.md) for what each app does, who it's for, and its key features.
@@ -31,8 +31,8 @@ See [APPS.md](APPS.md) for what each app does, who it's for, and its key feature
 
 All seven sites write to **one shared Cloudflare D1 database**.
 
-- Each signup stores the email and which app it came from, so a single table can hold all seven waitlists.
-- Every site's CTA submits to the same backend, which writes to D1.
+- Each signup stores the email and which app it came from, so one database holds all seven waitlists.
+- Every site is a Cloudflare Pages project with its own Pages Function at `/api/join`, bound to the D1 database `waitlist-db`.
 
 ## Status
 
@@ -46,13 +46,13 @@ The seven sites are generated from one shared design, so they stay consistent. D
 tools/site-builder/
 ├── build.py          # Renders every app into its folder
 ├── assets/           # Shared styles.css and site.js
+├── functions/api/    # The /api/join Pages Function, copied into every site
 └── apps/             # One content file per app (copy, features, FAQ, policies)
 ```
 
 ```bash
 python3 tools/site-builder/build.py              # build all seven
 python3 tools/site-builder/build.py lotus-g-1    # build one
-WAITLIST_ENDPOINT=https://<worker-url>/api/join python3 tools/site-builder/build.py
 ```
 
 ### Adding app screenshots
@@ -70,17 +70,39 @@ Drop portrait iPhone screenshots (1179×2556 works well) into `tools/site-builde
 
 `.jpg` and `.webp` work too. Missing files simply keep their placeholder.
 
-Each `lotus-*/` folder is self-contained static HTML (pages: home, release notes, contact, privacy, terms, follow updates) and can be deployed on its own. Without `WAITLIST_ENDPOINT`, the forms show "The waitlist isn't connected yet".
+Each `lotus-*/` folder is a self-contained Cloudflare Pages project:
 
-## Waitlist API setup
-
-`waitlist-api/` is a Cloudflare Worker that writes every site's signups to the shared D1 table (`email`, `app`, `source`, `created_at`, unique per email and app).
-
-```bash
-cd waitlist-api
-npx wrangler d1 create lotus-waitlist                       # copy the id into wrangler.toml
-npx wrangler d1 execute lotus-waitlist --remote --file=schema.sql
-npx wrangler deploy                                         # then rebuild the sites with WAITLIST_ENDPOINT
+```
+lotus-g-1/
+├── wrangler.toml       # Pages config: D1 binding (DB → waitlist-db) + APP_SLUG
+├── functions/api/      # POST /api/join → D1
+└── public/             # Static pages: home, release notes, contact, privacy, terms, follow updates
 ```
 
-Set `ALLOWED_ORIGINS` in `wrangler.toml` to the sites' domains before going live.
+## Waitlist
+
+`POST /api/join` on each site writes to the shared D1 database `waitlist-db`:
+
+- `contacts`: one row per email (unique on the lowercased email)
+- `waitlist_signups`: one row per email per app, with approximate location from Cloudflare (country, region, city, time zone, lat/long), `utm_*` tags from the landing URL, landing page, referrer, and the form it came from (`metadata.source`)
+- `apps`: one row per site. The site's `APP_SLUG` picks the row, so a site can only add to its own waitlist.
+
+Forms work without JavaScript too: a plain form post redirects back with `?joined=1`.
+
+## Deploying
+
+Deploy each site from its own folder, so Wrangler picks up that folder's `wrangler.toml` and `functions/`:
+
+```bash
+python3 tools/site-builder/build.py
+for s in lotus-*/; do (cd "$s" && npx wrangler pages deploy --branch main --force); done
+```
+
+`--force` sends the deploy to Cloudflare Pages. Without it, recent Wrangler versions try to deploy to Workers static assets instead.
+
+Export sign-ups (exports are gitignored; they contain personal data):
+
+```bash
+npx wrangler d1 execute waitlist-db --remote --json --command \
+  "SELECT a.slug, c.email, s.joined_at, s.country, s.utm_source FROM waitlist_signups s JOIN contacts c ON c.id = s.contact_id JOIN apps a ON a.id = s.app_id ORDER BY s.joined_at"
+```
