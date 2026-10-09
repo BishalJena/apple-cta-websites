@@ -32,6 +32,10 @@ OWNER = "Joel Vargas"
 LAST_UPDATED = "October 9, 2026"
 # Relative, so each app's forms post to bishal.app/<slug>/api/join.
 WAITLIST_ENDPOINT = "api/join"
+# Cloudflare Web Analytics site for bishal.app (shared with the main site). The
+# token is public by design; it only lets a page report visits. Cloudflare's
+# automatic setup doesn't reach pages served by the Worker, so add it here.
+WEB_ANALYTICS_TOKEN = "8ceb5101c97847098b77f9ea45a702fb"
 
 FONTS = (
     '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
@@ -78,6 +82,7 @@ def head(app, title, description):
 {FONTS}  <link rel="stylesheet" href="assets/styles.css">
   <style>:root {{ --brand: {app["brand"]}; --brand-2: {app["brand2"]}; }}</style>
   <script>if (scrollY < 8) document.documentElement.classList.add("nav-top");</script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "{WEB_ANALYTICS_TOKEN}"}}'></script>
 </head>
 '''
 
