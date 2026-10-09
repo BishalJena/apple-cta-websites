@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lotus F-2: Fair flight prices on your phone, plus every travel document</title>
+  <meta name="description" content="Lotus F-2 searches flights from a private connection so your phone isn&#x27;t shown higher prices, and lists every document your trip needs. Join the waitlist.">
+  <meta name="theme-color" content="#f4f4f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Lotus F-2: Fair flight prices on your phone, plus every travel document">
+  <meta property="og:description" content="Lotus F-2 searches flights from a private connection so your phone isn&#x27;t shown higher prices, and lists every document your trip needs. Join the waitlist.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/app-icon.svg">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,600,0..1,0&display=block">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap">
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>:root { --brand: var(--accent-blue); --brand-2: var(--accent-mint); }</style>
+  <script>if (scrollY < 8) document.documentElement.classList.add("nav-top");</script>
+</head>
+<body>
+  <div class="nav-spacer"></div>
+  <header class="nav-wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="app-identity" href="index.html">
+        <img class="app-icon" src="assets/app-icon.svg" alt="">
+        <span>Lotus F-2</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="release-notes.html">Release Notes</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a class="button" href="#waitlist">Join waitlist</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===================== Hero ===================== -->
+    <section class="hero" id="waitlist">
+      <div class="hero-content">
+        <span class="status-pill"><span class="dot"></span>Coming to iPhone</span>
+        <h1>Laptop prices,<br>on your phone</h1>
+        <p>Lotus F-2 searches flights from a private connection so you aren&#x27;t quoted more for using a phone. Then it lists every document your trip needs.</p>
+        <div class="waitlist-wrap">
+          <form class="waitlist" action="api/join" method="post" data-waitlist data-source="hero">
+            <input type="hidden" name="source" value="hero">
+            <label class="hp" aria-hidden="true">Company<input name="company" tabindex="-1" autocomplete="off"></label>
+            <input class="input" type="email" name="email" placeholder="you@example.com" autocomplete="email" aria-label="Email address" required>
+            <button class="button" type="submit">Join the waitlist</button>
+          </form>
+          <p class="waitlist-status" role="status" aria-live="polite"></p>
+        </div>
+        <span class="hero-note">No spam. Just one email when it&#x27;s ready.</span>
+      </div>
+
+      <div class="hero-media">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="phone">
+          <div class="phone-screen has-shot">
+            <div class="shot" role="img" aria-label="Lotus F-2 screenshot placeholder: Flight results">
+              <div class="shot-ph"><img class="app-icon" src="assets/app-icon.svg" alt=""><b>Flight results</b><code>screens/lotus-f-2/hero.png</code></div>
+            </div>
+          </div>
+        </div>
+        <div class="float-chip chip-streak" aria-hidden="true">
+          <span class="chip-icon icon" style="--c: var(--accent-green)">savings</span>
+          <div><b class="rounded">Fair fares</b><small>Private search</small></div>
+        </div>
+        <div class="float-chip chip-done" aria-hidden="true">
+          <span class="chip-icon icon" style="--c: var(--accent-blue)">fingerprint</span>
+          <div><b class="rounded">Masked</b><small>Device fingerprint</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Features ===================== -->
+    <section class="section" id="features">
+      <div class="section-head">
+        <span class="eyebrow">Features</span>
+        <h2 class="section-title">Book with confidence.<br>Travel without the stress.</h2>
+      </div>
+      <div class="card-grid">
+        <figure class="card third" style="--k: var(--accent-blue)">
+          <figcaption class="card-text">
+            <span class="kicker">Price comparison</span>
+            <h2>Every fare in one place</h2>
+            <p>Compares prices across airlines and booking sites, side by side.</p>
+          </figcaption>
+          <div class="card-media peek peek-1">
+            <div class="mini-phone">
+            <div class="shot" role="img" aria-label="Lotus F-2 screenshot placeholder: Every fare in one place">
+              <div class="shot-ph"><img class="app-icon" src="assets/app-icon.svg" alt=""><b>Every fare in one place</b><code>screens/lotus-f-2/card-1.png</code></div>
+            </div>
+            </div>
+          </div>
+        </figure>
+        <figure class="card two-thirds" style="--k: var(--accent-green)">
+          <figcaption class="card-text">
+            <span class="kicker">Private search</span>
+            <h2>The same fare, wherever you search</h2>
+            <p>Searches hide your IP address and phone fingerprint, so prices aren&#x27;t marked up for searching on a phone.</p>
+          </figcaption>
+          <div class="card-media peek peek-2">
+            <div class="mini-phone">
+            <div class="shot" role="img" aria-label="Lotus F-2 screenshot placeholder: Private search">
+              <div class="shot-ph"><img class="app-icon" src="assets/app-icon.svg" alt=""><b>Private search</b><code>screens/lotus-f-2/card-2-1.png</code></div>
+            </div>
+            </div>
+            <div class="mini-phone">
+            <div class="shot" role="img" aria-label="Lotus F-2 screenshot placeholder: Price comparison">
+              <div class="shot-ph"><img class="app-icon" src="assets/app-icon.svg" alt=""><b>Price comparison</b><code>screens/lotus-f-2/card-2-2.png</code></div>
+            </div>
+            </div>
+          </div>
+        </figure>
+        <figure class="card half" style="--k: var(--accent-orange)">
+          <figcaption class="card-text">
+            <span class="kicker">Document checklist</span>
+            <h2>Every document, for your exact route</h2>
+            <p>Visas, entry cards, health forms and more, tailored to where you&#x27;re flying from and to.</p>
+          </figcaption>
+          <div class="card-media peek peek-1">
+            <div class="mini-phone">
+            <div class="shot" role="img" aria-label="Lotus F-2 screenshot placeholder: Every document, for your exact route">
+              <div class="shot-ph"><img class="app-icon" src="assets/app-icon.svg" alt=""><b>Every document, for your exact route</b><code>screens/lotus-f-2/card-3.png</code></div>
+            </div>
+            </div>
+          </div>
+        </figure>
+        <figure class="card half" style="--k: var(--accent-purple)">
+          <figcaption class="card-text">
+            <span class="kicker">Step-by-step guidance</span>
+            <h2>No surprises at the airport</h2>
+            <p>Simple steps for check-in, security and immigration, so you&#x27;re never left guessing.</p>
+          </figcaption>
+          <div class="card-media peek peek-1">
+            <div class="mini-phone">
+            <div class="shot" role="img" aria-label="Lotus F-2 screenshot placeholder: No surprises at the airport">
+              <div class="shot-ph"><img class="app-icon" src="assets/app-icon.svg" alt=""><b>No surprises at the airport</b><code>screens/lotus-f-2/card-4.png</code></div>
+            </div>
+            </div>
+          </div>
+        </figure>
+        <figure class="card two-thirds" style="--k: var(--accent-mint)">
+          <figcaption class="card-text">
+            <span class="kicker">Travel day</span>
+            <h2>Reminders at the right moment</h2>
+            <p>Gentle reminders for check-in, bag drop and entry forms, timed to your flight.</p>
+          </figcaption>
+          <div class="card-media peek peek-2">
+            <div class="mini-phone">
+            <div class="shot" role="img" aria-label="Lotus F-2 screenshot placeholder: Trip timeline">
+              <div class="shot-ph"><img class="app-icon" src="assets/app-icon.svg" alt=""><b>Trip timeline</b><code>screens/lotus-f-2/card-5-1.png</code></div>
+            </div>
+            </div>
+            <div class="mini-phone">
+            <div class="shot" role="img" aria-label="Lotus F-2 screenshot placeholder: Reminder">
+              <div class="shot-ph"><img class="app-icon" src="assets/app-icon.svg" alt=""><b>Reminder</b><code>screens/lotus-f-2/card-5-2.png</code></div>
+            </div>
+            </div>
+          </div>
+        </figure>
+        <figure class="card third" style="--k: var(--accent-indigo)">
+          <figcaption class="card-text">
+            <span class="kicker">Entry rules</span>
+            <h2>From official sources</h2>
+            <p>Requirements are based on official entry rules, with links so you can double-check before you fly.</p>
+          </figcaption>
+          <div class="card-media peek peek-1">
+            <div class="mini-phone">
+            <div class="shot" role="img" aria-label="Lotus F-2 screenshot placeholder: From official sources">
+              <div class="shot-ph"><img class="app-icon" src="assets/app-icon.svg" alt=""><b>From official sources</b><code>screens/lotus-f-2/card-6.png</code></div>
+            </div>
+            </div>
+          </div>
+        </figure>
+        <figure class="card full" style="--k: var(--accent-pink)">
+          <figcaption class="card-text">
+            <span class="kicker">All in one app</span>
+            <h2>From search to arrival</h2>
+            <p>Find a fair fare, get your documents in order and know what to expect at the airport, all in one place.</p>
+          </figcaption>
+          <div class="card-media peek peek-3">
+            <div class="mini-phone">
+            <div class="shot" role="img" aria-label="Lotus F-2 screenshot placeholder: Search">
+              <div class="shot-ph"><img class="app-icon" src="assets/app-icon.svg" alt=""><b>Search</b><code>screens/lotus-f-2/card-7-1.png</code></div>
+            </div>
+            </div>
+            <div class="mini-phone">
+            <div class="shot" role="img" aria-label="Lotus F-2 screenshot placeholder: Checklist">
+              <div class="shot-ph"><img class="app-icon" src="assets/app-icon.svg" alt=""><b>Checklist</b><code>screens/lotus-f-2/card-7-2.png</code></div>
+            </div>
+            </div>
+            <div class="mini-phone">
+            <div class="shot" role="img" aria-label="Lotus F-2 screenshot placeholder: Travel day">
+              <div class="shot-ph"><img class="app-icon" src="assets/app-icon.svg" alt=""><b>Travel day</b><code>screens/lotus-f-2/card-7-3.png</code></div>
+            </div>
+            </div>
+          </div>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="section reviews-section">
+      <h2 class="reviews-title">Questions, answered</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Why are flights more expensive on my phone?</h3>
+          <p>Some booking sites change prices based on your device, location and browsing history. Lotus F-2 searches without revealing those signals, so you see the same fares as everyone else.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is the private search legal?</h3>
+          <p>Yes. It works like a privacy-focused VPN for your flight searches. You still book directly with the airline or booking site.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Where do the document requirements come from?</h3>
+          <p>We use a database of official entry rules for each country. Rules change, so we link to official sources and recommend checking them before you fly.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Will Lotus F-2 always find a lower price?</h3>
+          <p>Not always. Sometimes the price you&#x27;re shown is already fair. When it is, you&#x27;ll know you&#x27;re not overpaying.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Values ===================== -->
+    <section class="section">
+      <div class="section-head">
+        <span class="eyebrow">Values</span>
+        <h2 class="section-title">On the traveller&#x27;s side</h2>
+      </div>
+      <div class="values">
+        <figure class="value" style="--c: var(--accent-blue)">
+          <span class="badge icon">visibility_off</span>
+          <div><h3>No tracking</h3><p>We don&#x27;t build a profile of where you want to go, and we never sell your searches.</p></div>
+        </figure>
+        <figure class="value" style="--c: var(--accent-green)">
+          <span class="badge icon">verified</span>
+          <div><h3>Honest prices</h3><p>We show the fare you&#x27;ll actually pay, with baggage and fees made clear.</p></div>
+        </figure>
+        <figure class="value" style="--c: var(--accent-purple)">
+          <span class="badge icon">self_improvement</span>
+          <div><h3>Less travel anxiety</h3><p>Every document and step for your route in one calm checklist.</p></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================== CTA ===================== -->
+    <section class="cta">
+      <div class="cta-inner">
+        <img class="app-icon" src="assets/app-icon.svg" alt="Lotus F-2 app icon">
+        <h2>Stop overpaying for flights</h2>
+        <p>Join the waitlist and be first to search with Lotus F-2.</p>
+        <div class="waitlist-wrap">
+          <form class="waitlist" action="api/join" method="post" data-waitlist data-source="cta">
+            <input type="hidden" name="source" value="cta">
+            <label class="hp" aria-hidden="true">Company<input name="company" tabindex="-1" autocomplete="off"></label>
+            <input class="input" type="email" name="email" placeholder="you@example.com" autocomplete="email" aria-label="Email address" required>
+            <button class="button" type="submit">Join the waitlist</button>
+          </form>
+          <p class="waitlist-status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <a class="app-identity" href="index.html"><img class="app-icon" src="assets/app-icon.svg" alt=""><span>Lotus F-2</span></a>
+      <ul class="footer-links">
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+        <li><a href="updates.html">Follow Updates</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">© <span data-year>2026</span> Joel Vargas. All rights reserved.</div>
+  </footer>
+
+  <script src="assets/site.js" defer></script>
+</body>
+</html>
